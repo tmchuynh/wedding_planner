@@ -13,5 +13,9 @@ th, td {
 
 .accordion-content {
 	display: none;
-	padding: 10px;
+	margin: 5rem;
+}
+
+.opened {
+    background-color: #f2f2f2;
 }

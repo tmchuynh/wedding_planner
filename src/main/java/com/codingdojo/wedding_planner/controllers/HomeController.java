@@ -1,5 +1,7 @@
 package com.codingdojo.wedding_planner.controllers;
 
+import java.text.DecimalFormat;
+
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -35,6 +37,13 @@ public class HomeController {
 	        venue.setFormattedFromDate(formattedFromDate);
 	        venue.setFormattedToDate(formattedToDate);
 	    }
+	    
+	    DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+	    for (Food food : foodList) {
+	        double formattedPrice = Double.parseDouble(decimalFormat.format(food.getPrice()));
+	        food.setFormattedPrice(formattedPrice);
+	    }
+	    
 
 	    model.addAttribute("foodList", foodList);
 	    model.addAttribute("venueList", venueList);

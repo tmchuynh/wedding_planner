@@ -26,6 +26,9 @@ public class Food {
 
 	private double price;
 	
+	@Column(name = "formatted_price", columnDefinition = "DECIMAL(10,2) DEFAULT 0.00")
+	private double formattedPrice;
+	
 	private String image;
 
 	@ElementCollection
@@ -72,6 +75,14 @@ public class Food {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public double getFormattedPrice() {
+		return formattedPrice;
+	}
+
+	public void setFormattedPrice(double formattedPrice) {
+		this.formattedPrice = formattedPrice;
 	}
 
 	public Set<String> getRestrictions() {
