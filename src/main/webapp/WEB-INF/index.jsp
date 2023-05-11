@@ -13,7 +13,20 @@
 	<div class="container-fluid p-4">
 		<h1>Wedding Planner</h1>
 		<h2>Venues</h2>
-		<table class="table">
+		<div class="filter py-3">
+			<!-- Filter by Food Restriction dropdown -->
+			<div class="form-group">
+				<label for="foodRestriction">Filter by Food Restriction:</label> <select
+					class="form-control" id="foodRestriction">
+					<option value="">All</option>
+					<c:forEach items="${foodRestrictions}" var="restriction">
+						<option value="${restriction}">${restriction}</option>
+					</c:forEach>
+				</select>
+			</div>
+		</div>
+
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -27,6 +40,7 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${venueList}" var="venue">
+
 					<tr class="accordion">
 						<td><span class="arrow">&#x25B6;</span> ${venue.name}</td>
 						<td>${venue.address}</td>
@@ -37,27 +51,31 @@
 						<td>${venue.formattedToDate}</td>
 					</tr>
 					<tr class="accordion-content">
-						<td colspan="7">
-							<h3>Available Foods:</h3>
-							<table>
+						<td colspan="7"><img src="${venue.image }" alt="${venue.name }" style="width: 200px; height: 200px; object-fit: cover;" class="img-thumbnail">
+							<h3 class="accordion-header">Available Foods:</h3>
+							<table class="table table-hover">
 								<thead>
 									<tr>
 										<th>Name</th>
+										<td></td>
 										<th>Description</th>
 										<th>Price</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${venue.availableFoods}" var="food">
-										<tr>
+										<!-- Set data-restrictions attribute to hold food restrictions -->
+										<tr data-restrictions="${food.restrictions}">
 											<td class="col-3">${food.name}</td>
-											<td>${food.description}</td>
-											<td>$${food.formattedPrice}</td>
+											<td class="col-3"><img src="/images/${food.image}"
+												class="img-thumbnail" alt="${food.name}" style="width: 200px; height: 150px; object-fit: cover;"></td>
+											<td class="col-5">${food.description}</td>
+											<td class="col-1">${food.formattedPrice}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
-							</table>
-						</td>
+
+							</table></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -66,13 +84,41 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(document).ready(function() {
+			// Handle food restriction filtering
+			$('#foodRestriction').change(function() {
+				const selectedRestriction = $(this).val();
+				if (selectedRestriction) {
+					// Close all accordions
+					$('.accordion').removeClass('opened');
+					$('.accordion .arrow').text('▶');
+					$('.accordion-content').slideUp();
+
+					$('tr[data-restrictions]').each(function() {
+						const restrictions = $(this).data('restrictions');
+						// Show the accordion content row if it matches the selected restriction
+						if (restrictions.includes(selectedRestriction)) {
+							$(this).show();
+						}
+					});
+				} else {
+					// Show all accordion content rows when no restriction is selected
+					$('tr.accordion-content').show();
+				}
+			});
+
+			// Initial state of the filter
+			$('#foodRestriction').val('');
+
+			// Handle accordion functionality
 			$('.accordion').click(function() {
+				// Toggle the arrow icon and toggle the accordion state
 				$(this).find('.arrow').text(function(_, text) {
 					return text === '▼' ? '▶' : '▼';
 				});
 				$(this).toggleClass('opened');
 				$(this).next('.accordion-content').slideToggle();
 			});
+
 		});
 	</script>
 

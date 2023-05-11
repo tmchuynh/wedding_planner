@@ -32,9 +32,9 @@ public class Food {
 	private String image;
 
 	@ElementCollection
-    @CollectionTable(name = "food_restrictions", joinColumns = @JoinColumn(name = "food_id"))
-    @Column(name = "restriction")
-    private Set<String> restrictions;
+	@CollectionTable(name = "food_restrictions", joinColumns = @JoinColumn(name = "food_id"))
+	@Column(name = "restriction")
+	private Set<String> restrictions;
 
 	// many to one relationship with venue
 	@ManyToOne
