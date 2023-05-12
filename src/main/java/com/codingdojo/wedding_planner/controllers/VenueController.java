@@ -61,6 +61,6 @@ public class VenueController {
 		model.addAttribute("foodList", foodList);
 		model.addAttribute("venueList", venueList);
 		model.addAttribute("foodRestrictions", foodRestrictions);
-		return "index";
+		return "venue";
 	}
 }

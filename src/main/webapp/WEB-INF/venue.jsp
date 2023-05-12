@@ -70,7 +70,7 @@
 											<td class="col-3"><img src="/images/${food.image}"
 												class="img-thumbnail" alt="${food.name}" style="width: 200px; height: 150px; object-fit: cover;"></td>
 											<td class="col-5">${food.description}</td>
-											<td class="col-1">${food.formattedPrice}</td>
+											<td class="col-1">$${food.formattedPrice}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -82,45 +82,7 @@
 		</table>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			// Handle food restriction filtering
-			$('#foodRestriction').change(function() {
-				const selectedRestriction = $(this).val();
-				if (selectedRestriction) {
-					// Close all accordions
-					$('.accordion').removeClass('opened');
-					$('.accordion .arrow').text('▶');
-					$('.accordion-content').slideUp();
-
-					$('tr[data-restrictions]').each(function() {
-						const restrictions = $(this).data('restrictions');
-						// Show the accordion content row if it matches the selected restriction
-						if (restrictions.includes(selectedRestriction)) {
-							$(this).show();
-						}
-					});
-				} else {
-					// Show all accordion content rows when no restriction is selected
-					$('tr.accordion-content').show();
-				}
-			});
-
-			// Initial state of the filter
-			$('#foodRestriction').val('');
-
-			// Handle accordion functionality
-			$('.accordion').click(function() {
-				// Toggle the arrow icon and toggle the accordion state
-				$(this).find('.arrow').text(function(_, text) {
-					return text === '▼' ? '▶' : '▼';
-				});
-				$(this).toggleClass('opened');
-				$(this).next('.accordion-content').slideToggle();
-			});
-
-		});
-	</script>
+	<script src="/js/venue.js"></script>
 
 
 </body>
