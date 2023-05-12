@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Wedding Planner</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/accordian.css">
 </head>
@@ -51,7 +51,7 @@
 						<td>${venue.formattedToDate}</td>
 					</tr>
 					<tr class="accordion-content">
-						<td colspan="7"><img src="${venue.image }" alt="${venue.name }" style="width: 200px; height: 200px; object-fit: cover;" class="img-thumbnail">
+						<td colspan="7"><img src="/images/${venue.image }" alt="${venue.name }" style="width: 200px; height: 200px; object-fit: cover;" class="img-thumbnail">
 							<h3 class="accordion-header">Available Foods:</h3>
 							<table class="table table-hover">
 								<thead>
