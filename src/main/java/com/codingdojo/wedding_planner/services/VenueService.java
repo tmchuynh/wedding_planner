@@ -29,9 +29,9 @@ public class VenueService {
     }
 
     public Venue updateVenue(Long id, Venue venueDetails) throws NotFoundException {
-        Optional<Venue> optionalVenue = getVenueById(id);
-        if (optionalVenue.isPresent()) {
-            Venue venue = optionalVenue.get();
+        Optional<Venue> venueOptional = getVenueById(id);
+        if (venueOptional.isPresent()) {
+            Venue venue = venueOptional.get();
             venue.setName(venueDetails.getName());
             venue.setAddress(venueDetails.getAddress());
             venue.setCity(venueDetails.getCity());
@@ -46,15 +46,12 @@ public class VenueService {
         }
     }
 
+
     public void deleteVenue(Long id) throws NotFoundException {
-        Optional<Venue> optionalVenue = getVenueById(id);
-        if (optionalVenue.isPresent()) {
-            Venue venue = optionalVenue.get();
-            venueRepository.delete(venue);
-        } else {
-            throw new NotFoundException();
-        }
+        Optional<Venue> venueOptional = getVenueById(id);
+        venueOptional.ifPresent(venue -> venueRepository.delete(venue));
     }
+
 
 }
 

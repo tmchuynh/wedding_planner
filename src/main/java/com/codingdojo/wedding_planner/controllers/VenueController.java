@@ -67,7 +67,7 @@ public class VenueController {
 	    Optional<Venue> venue;
 	    try {
 	        venue = venueService.getVenueById(id);
-	        model.addAttribute("venue", venue.get());
+	        model.addAttribute("venue", venue);
 	        return "venueDetails";
 	    } catch (NotFoundException e) {
 	        e.printStackTrace();
