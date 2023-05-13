@@ -30,12 +30,8 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>Address</th>
 					<th>City</th>
-					<th class="text-center">Zip Code</th>
 					<th class="text-center">Price/Hour</th>
-					<th class="text-center">Available From</th>
-					<th class="text-center">Available To</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,14 +39,10 @@
 
 					<tr class="accordion">
 						<td class="col-2"><span class="arrow">&#x25B6;</span>${venue.name}</td>
-						<td class="col-2">${venue.address}</td>
 						<td class="col-1">${venue.city}</td>
-						<td class="col-1 text-center">${venue.zip_code}</td>
 						<td class="col-1 text-center">$${venue.pricePerHour}</td>
-						<td class="col-1 text-center">${venue.formattedFromDate}</td>
-						<td class="col-1 text-center">${venue.formattedToDate}</td>
 						<td class="col-1 text-center"><a class="btn btn-primary"
-								href="/venues/${venue.id}">View Details</a></td>
+							href="/venues/${venue.id}">View Details</a></td>
 					</tr>
 
 					<tr class="accordion-content">
@@ -65,7 +57,6 @@
 										<th>Name</th>
 										<td></td>
 										<th>Description</th>
-										<th>Price</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -79,12 +70,10 @@
 													class="img-thumbnail" alt="${food.name}"
 													style="width: 200px; height: 150px; object-fit: cover;"></td>
 												<td class="col-6">${food.description}</td>
-												<td class="col-1">$${food.formattedPrice}</td>
 											</tr>
 										</c:if>
 									</c:forEach>
 								</tbody>
-
 							</table></td>
 					</tr>
 				</c:forEach>

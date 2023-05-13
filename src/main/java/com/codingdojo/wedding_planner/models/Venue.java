@@ -26,6 +26,8 @@ public class Venue {
 	private String city;
 
 	private String zip_code;
+	
+	private int capacity;
 
 	private BigDecimal pricePerHour;
 
@@ -84,6 +86,14 @@ public class Venue {
 
 	public void setZip_code(String zip_code) {
 		this.zip_code = zip_code;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
 	}
 
 	public BigDecimal getPricePerHour() {

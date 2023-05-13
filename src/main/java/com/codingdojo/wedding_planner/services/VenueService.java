@@ -1,6 +1,7 @@
 package com.codingdojo.wedding_planner.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
@@ -19,9 +20,8 @@ public class VenueService {
         return venueRepository.findAll();
     }
 
-    public Venue getVenueById(Long id) throws NotFoundException {
-        return venueRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException());
+    public Optional<Venue> getVenueById(Long id) throws NotFoundException {
+        return venueRepository.findById(id);
     }
 
     public Venue createVenue(Venue venue) {
@@ -29,21 +29,32 @@ public class VenueService {
     }
 
     public Venue updateVenue(Long id, Venue venueDetails) throws NotFoundException {
-        Venue venue = getVenueById(id);
-        venue.setName(venueDetails.getName());
-        venue.setAddress(venueDetails.getAddress());
-        venue.setCity(venueDetails.getCity());
-        venue.setZip_code(venueDetails.getZip_code());
-        venue.setPricePerHour(venueDetails.getPricePerHour());
-        venue.setAvailableFromDate(venueDetails.getAvailableFromDate());
-        venue.setAvailableToDate(venueDetails.getAvailableToDate());
-        venue.setAvailableFoods(venueDetails.getAvailableFoods());
-        return venueRepository.save(venue);
+        Optional<Venue> optionalVenue = getVenueById(id);
+        if (optionalVenue.isPresent()) {
+            Venue venue = optionalVenue.get();
+            venue.setName(venueDetails.getName());
+            venue.setAddress(venueDetails.getAddress());
+            venue.setCity(venueDetails.getCity());
+            venue.setZip_code(venueDetails.getZip_code());
+            venue.setPricePerHour(venueDetails.getPricePerHour());
+            venue.setAvailableFromDate(venueDetails.getAvailableFromDate());
+            venue.setAvailableToDate(venueDetails.getAvailableToDate());
+            venue.setAvailableFoods(venueDetails.getAvailableFoods());
+            return venueRepository.save(venue);
+        } else {
+            throw new NotFoundException();
+        }
     }
 
     public void deleteVenue(Long id) throws NotFoundException {
-        Venue venue = getVenueById(id);
-        venueRepository.delete(venue);
+        Optional<Venue> optionalVenue = getVenueById(id);
+        if (optionalVenue.isPresent()) {
+            Venue venue = optionalVenue.get();
+            venueRepository.delete(venue);
+        } else {
+            throw new NotFoundException();
+        }
     }
+
 }
 
