@@ -43,6 +43,9 @@ public class Venue {
 	// one to many relationship with food
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
 	private List<Food> availableFoods;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
+	private List<Decoration> availableDecor;
 
 	public Venue() {
 
@@ -150,5 +153,13 @@ public class Venue {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public List<Decoration> getAvailableDecor() {
+		return availableDecor;
+	}
+
+	public void setAvailableDecor(List<Decoration> availableDecor) {
+		this.availableDecor = availableDecor;
 	}
 }
