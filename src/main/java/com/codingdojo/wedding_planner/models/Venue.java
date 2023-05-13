@@ -1,7 +1,6 @@
 package com.codingdojo.wedding_planner.models;
 
 import java.math.BigDecimal;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,21 +20,21 @@ public class Venue {
 	private Long id;
 
 	private String name;
-	
+
 	private String address;
-	
+
 	private String city;
-	
+
 	private String zip_code;
-	
+
 	private BigDecimal pricePerHour;
-	
+
 	private String image;
 
 	private LocalDateTime availableFromDate;
-	
+
 	private LocalDateTime availableToDate;
-	
+
 	private String formattedFromDate;
     private String formattedToDate;
 

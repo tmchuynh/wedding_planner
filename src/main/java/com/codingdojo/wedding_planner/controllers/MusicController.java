@@ -1,5 +1,8 @@
 package com.codingdojo.wedding_planner.controllers;
 
+
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,20 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.codingdojo.wedding_planner.models.Music;
-import com.codingdojo.wedding_planner.models.Song;
 import com.codingdojo.wedding_planner.repositories.MusicRepository;
-import com.codingdojo.wedding_planner.repositories.SongRepository;
 
 @Controller
 @RequestMapping("/music")
 public class MusicController {
-	
+
 	@Autowired
 	private MusicRepository musicRepository;
-	
-	@Autowired
-	private SongRepository songRepository;
-	
+
 	@GetMapping("")
 	public String getAll(@RequestParam(value = "musicType", required = false) String musicType, Model model) {
 	    List<Music> musicList;
@@ -32,7 +30,7 @@ public class MusicController {
 	    } else {
 	        musicList = musicRepository.findAll();
 	    }
-	    
+
 	    List<String> musicTypes = musicRepository.findAllTypes();
 
 	    model.addAttribute("musicList", musicList);

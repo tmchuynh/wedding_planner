@@ -9,5 +9,6 @@ import com.codingdojo.wedding_planner.models.Song;
 public interface SongRepository extends JpaRepository <Song, Long>{
 	List<Song> findByTitle(String title);
 	Song findById(long id);
+	@Override
 	List<Song> findAll();
 }

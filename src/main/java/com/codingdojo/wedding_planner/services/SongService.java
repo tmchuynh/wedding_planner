@@ -22,11 +22,11 @@ public class SongService {
 	public Song getSongById(Long id) throws NotFoundException {
 		return songRepository.findById(id).orElseThrow(() -> new NotFoundException());
 	}
-	
+
 	public Song createSong(Song song) {
 		return songRepository.save(song);
 	}
-	
+
 	public Song updateSong(Long id, Song songDetails) throws NotFoundException {
         Song song = getSongById(id);
         song.setTitle(songDetails.getTitle());

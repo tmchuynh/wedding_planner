@@ -13,15 +13,15 @@ import com.codingdojo.wedding_planner.repositories.MusicRepository;
 public class MusicService {
 	@Autowired
 	private MusicRepository musicRepository;
-	
+
 	public List<Music> getAllMusic() {
 		return musicRepository.findAll();
 	}
-	
+
 	public Music getMusicById(Long id) throws NotFoundException {
 		return musicRepository.findById(id).orElseThrow(() -> new NotFoundException());
 	}
-	
+
 	public Music updateMusic(Long id, Music musicDetails) throws NotFoundException {
 		Music music = getMusicById(id);
 		music.setName(musicDetails.getName());
@@ -31,7 +31,7 @@ public class MusicService {
 		music.setAvailableSongs(musicDetails.getAvailableSongs());
 		return musicRepository.save(music);
 	}
-	
+
 	public void deleteMusic(Long id) throws NotFoundException {
 		Music music = getMusicById(id);
 		musicRepository.delete(music);

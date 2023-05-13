@@ -18,24 +18,24 @@ public class Music {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private String type;
-	
+
 	private LocalDateTime availableFromDate;
 	private LocalDateTime availableToDate;
-	
+
 	private String formattedFromDate;
 	private String formattedToDate;
-	
+
 	private BigDecimal pricePerHour;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "music")
 	private List<Song> availableSongs;
-	
+
 	public Music() {
-		
+
 	}
 
 	public Long getId() {

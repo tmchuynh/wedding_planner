@@ -30,16 +30,16 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>Type</th>
-					<th>Price per Hour</th>
+					<th class="text-center">Type</th>
+					<th class="text-center">Price per Hour</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${musicList}" var="music">
 					<tr class="accordion" data-restrictions="${music.type }">
-						<td><span class="arrow">&#x25B6;</span>${music.name}</td>
-						<td>${music.type}</td>
-						<td>$${music.pricePerHour}</td>
+						<td class="col-8"><span class="arrow">&#x25B6;</span>  ${music.name}</td>
+						<td class="col-2 text-center">${music.type}</td>
+						<td class="col-2 text-center">$${music.pricePerHour}</td>
 					</tr>
 					<tr class="accordion-content">
 						<td colspan="7">
@@ -54,8 +54,8 @@
 								<tbody>
 									<c:forEach items="${music.availableSongs}" var="song">
 										<tr>
-											<td>${song.title}</td>
-											<td>${song.length}</td>
+											<td class="col-12">${song.title}</td>
+											<td class="col-2">${song.length}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

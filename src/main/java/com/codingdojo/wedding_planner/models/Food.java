@@ -25,10 +25,10 @@ public class Food {
 	private String description;
 
 	private double price;
-	
+
 	@Column(name = "formatted_price", columnDefinition = "DECIMAL(10,2) DEFAULT 0.00")
 	private double formattedPrice;
-	
+
 	private String image;
 
 	@ElementCollection

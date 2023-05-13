@@ -16,17 +16,17 @@ public class Song {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String title;
-	
+
 	private Time length;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "music_id")
 	private Music music;
-	
+
 	public Song() {
-		
+
 	}
 
 	public Long getId() {

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.codingdojo.wedding_planner.models.Venue;
 
 public interface VenueRepository extends JpaRepository<Venue, Long> {
+	@Override
 	List<Venue> findAll();
     Venue findById(long id);
     List<Venue> findByName(String name);

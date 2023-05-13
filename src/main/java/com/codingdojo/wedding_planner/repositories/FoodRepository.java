@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.codingdojo.wedding_planner.models.Food;
 
 public interface FoodRepository extends JpaRepository<Food, Long>  {
+	@Override
 	List<Food> findAll();
 	Food findById(long id);
     List<Food> findByName(String name);

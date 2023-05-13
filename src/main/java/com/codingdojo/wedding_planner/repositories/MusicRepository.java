@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.codingdojo.wedding_planner.models.Music;
 
 public interface MusicRepository extends JpaRepository<Music, Long>{
+	@Override
 	List<Music> findAll();
 	Music findById(long id);
 	List<Music> findByType(String type);
