@@ -41,6 +41,9 @@ public class Food {
 	@JoinColumn(name = "venue_id")
 	private Venue venue;
 
+	@Column(name = "on_change_action", columnDefinition = "TEXT") // Specify the SQL type as TEXT
+    private String onChangeAction;
+
 	public Food() {
 
 	}
@@ -107,5 +110,14 @@ public class Food {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	public String getOnChangeAction() {
+        return onChangeAction;
+    }
+
+	public void setOnChangeAction(String action) {
+		this.onChangeAction = action;
+		
 	}
 }

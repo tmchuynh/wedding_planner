@@ -1,7 +1,10 @@
 package com.codingdojo.wedding_planner.controllers;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +77,49 @@ public class VenueController {
 	        return "error"; // Return an appropriate error view name or handle the case differently
 	    }
 	}
+	
+	
+	@GetMapping("/")
+	public String displaySelectedFoods(String foodId, String venueId, Model model, HttpSession session) throws NotFoundException {
+		List<Map<String, Object>> selectedFoods = (List<Map<String, Object>>) session.getAttribute("selectedFoods");
+		 model.addAttribute("selectedFoods", selectedFoods);
+	    if (selectedFoods == null) {
+	        selectedFoods = new ArrayList<>();
+	    }
+
+	    boolean isChecked = true; // Assuming the food selection is always checked
+
+	    if (isChecked) {
+	        Map<String, Object> food = new HashMap<>();
+	        food.put("id", foodId);
+	        Map<String, Object> venue = new HashMap<>();
+	        venue.put("id", venueId);
+	        selectedFoods.add(Map.of("food", food, "venue", venue));
+	        
+	        // Log the added food and venue
+	        System.out.println("Food ID: " + foodId + ", Venue ID: " + venueId + " has been added to the session.");
+	    } else {
+	        selectedFoods.removeIf(entry -> entry.get("food").equals(foodId) && entry.get("venue").equals(venueId));
+	    }
+
+	    session.setAttribute("selectedFoods", selectedFoods);
+
+	    // Attach event handler to checkboxes
+	    List<Venue> venueList = venueRepository.findAll();
+	    for (Venue venue : venueList) {
+	        List<Food> availableFoods = venue.getAvailableFoods();
+	        for (Food food : availableFoods) {
+	            food.setOnChangeAction("selectFood('" + food.getId() + "', '" + venue.getId() + "', this.checked)");
+	        }
+	    }
+
+	    //  code after attaching event handler to checkboxes
+
+	    return "selectedFoods";
+	}
+
+
+
 
 
 }

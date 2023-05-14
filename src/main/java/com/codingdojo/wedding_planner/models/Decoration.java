@@ -31,7 +31,7 @@ public class Decoration {
 	
 	private double fee;
 	
-	private int quanity;
+	private int quantity;
 	
 	@ManyToOne
 	@JoinColumn(name = "venue_id")
@@ -113,12 +113,12 @@ public class Decoration {
 		this.fee = fee;
 	}
 
-	public int getQuanity() {
-		return quanity;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setQuanity(int quanity) {
-		this.quanity = quanity;
+	public void setQuanity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public Venue getVenue() {

@@ -13,10 +13,13 @@
 	<div class="container-fluid p-4">
 		<div class="d-flex justify-content-between">
 			<h1>${venue.isPresent() ? venue.get().name : ''}</h1>
-			<button class="btn btn-primary" onclick="toggleView()">Toggle
-				View</button>
+			<div class="d-flex justify-content-between">
+				<button class="btn btn-primary m-3" onclick="toggleView()">Toggle
+					View</button>
+				<a class="btn btn-secondary m-3" href="/venues">Back</a>
+
+			</div>
 		</div>
-		<a class="btn btn-secondary" href="/venues">Back</a>
 		<div id="table-view">
 			<table class="table table-hover">
 				<thead>
@@ -37,8 +40,10 @@
 								style="width: 200px; height: 150px; object-fit: cover;"></td>
 							<td class="col-6">${food.description}</td>
 							<td class="col-2">${food.formattedPrice}</td>
+							<!-- change to button on click-->
 							<td class="col-1"><input class="form-check-input"
-								id="${food.id}" data-toggle="toggle" type="checkbox"></td>
+								id="${food.id}" data-toggle="toggle" type="checkbox"
+								onchange="selectFood(${food.id}, ${venue.get().id})"></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -54,6 +59,7 @@
 						<p class="card-text">${food.description}</p>
 						<p class="card-text">$${food.formattedPrice}</p>
 						<div class="form-check">
+
 							<input class="form-check-input" id="${food.id}"
 								data-toggle="toggle" type="checkbox"
 								onchange="selectFood(${food.id}, ${venue.get().id})"> <label
@@ -67,8 +73,6 @@
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
-	// doesn't work
-	// functions don't get called when checkboxes are clicked
 	document.addEventListener('DOMContentLoaded', function() {
 		console.log("loaded");
 		  // Attach event handler to checkboxes
@@ -84,7 +88,8 @@
 	
 	
 	function selectFood(foodId, venueId) {
-	    const checkbox = document.getElementById(`${foodId}`);
+	    const checkbox = document.getElementById(foodId);
+
 	    const isChecked = checkbox.checked;
 	    const selectedFoods = sessionStorage.getItem('selectedFoods') ? JSON.parse(sessionStorage.getItem('selectedFoods')) : [];
 
@@ -92,14 +97,14 @@
 	        const food = { id: foodId };
 	        const venue = { id: venueId };
 	        selectedFoods.push({ food, venue });
+	        
 	    } else {
 	        const index = selectedFoods.findIndex(entry => entry.food.id === foodId && entry.venue.id === venueId);
 	        if (index > -1) {
 	            selectedFoods.splice(index, 1);
 	        }
 	    }
-
-	    console.log(`Food ID: ${foodId}, Venue ID: ${venueId}, Checked: ${isChecked}`);
+	    console.log(selectedFoods);
 	    sessionStorage.setItem('selectedFoods', JSON.stringify(selectedFoods));
 	}
 	</script>
