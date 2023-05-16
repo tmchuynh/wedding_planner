@@ -12,7 +12,6 @@ import com.codingdojo.wedding_planner.models.Catering;
 import com.codingdojo.wedding_planner.models.GuestRoom;
 import com.codingdojo.wedding_planner.repositories.CateringRepository;
 import com.codingdojo.wedding_planner.repositories.GuestRoomRepository;
-import com.codingdojo.wedding_planner.repositories.VenueRepository;
 
 import jakarta.servlet.http.HttpSession;
 
