@@ -33,6 +33,7 @@ public class Decoration {
 	
 	private int quantity;
 	
+	// Many-to-One relationship with Venue
 	@ManyToOne
 	@JoinColumn(name = "venue_id")
 	private Venue venue;

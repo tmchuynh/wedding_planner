@@ -33,9 +33,11 @@ public class Catering {
 	
 	private String image;
 	
+	// One-to-Many relationship with Food
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "catering")
 	private List<Food> availableFoods;
 	
+	// Many-to-One relationship with Venue
 	@ManyToOne
 	@JoinColumn(name = "venue_id")
 	private Venue venue;

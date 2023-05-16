@@ -13,8 +13,9 @@
 		<div class="d-flex justify-content-between">
 			<h1>Available Rooms for ${venue != null ? venue.name : ''}</h1>
 			<div class="d-flex justify-content-between">
-				<a class="btn btn-secondary m-3" href="/venues">Back to Venue List</a>
-				<a class="btn btn-secondary m-3" href="/venues/${venue.id }">Pick Another Date</a>
+				<a class="btn btn-secondary m-3" href="/venues">Back to Venue
+					List</a> <a class="btn btn-secondary m-3" href="/venues/${venue.id }">Pick
+					Another Date</a>
 			</div>
 		</div>
 	</div>
@@ -25,23 +26,27 @@
 		<c:if test="${not empty roomOptions}">
 			<div class="row">
 				<c:forEach items="${roomOptions}" var="room">
+					<!-- Displays only the room available for the selected date -->
 					<c:if test="${room.isAvailableOnDate(selectedDate)}">
 						<div class="col-md-6 col-lg-4">
-							<div class="room-card card">
+							<div class="room-card card m-3">
+							<img src="/images/rooms/${room.image}"
+							alt="${room.name}" class="card-img-top" style="height: 15rem; object-fit: cover;">
 								<div class="card-body">
 									<h5 class="card-title">${room.type}</h5>
 									<div class="room-details">
 										<p>Capacity: ${room.capacity}</p>
 										<p>Available on:</p>
-										<ul>
-											<c:forEach items="${room.availabilities}" var="availability"
-												varStatus="status">
-												<c:if test="${room.isAvailableOnDate(selectedDate)}">
-													<li>${availability.date} - 
-														${availability.roomsAvailable} rooms</li>
-												</c:if>
+										<c:set var="availableRooms"
+											value="${room.getAvailableRoomsOnDate(selectedDate)}" />
+										<c:if test="${not empty availableRooms}">
+											<c:forEach items="${availableRooms}" var="availableRoom">
+												<ul>
+													<li>Date: ${availableRoom.date}</li>
+													<li>Rooms Available: ${availableRoom.roomsAvailable}</li>
+												</ul>
 											</c:forEach>
-										</ul>
+										</c:if>
 									</div>
 								</div>
 							</div>

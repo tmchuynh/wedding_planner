@@ -25,7 +25,8 @@ public class VenueController {
 
 	@Autowired
 	private VenueRepository venueRepository;
-
+	
+	// Lists all the venues with their details (restrictions, amenities, etc.)
 	@GetMapping("")
 	public String getAll(Model model,
 			@RequestParam(name = "restriction", required = false) String restriction) {
@@ -36,6 +37,7 @@ public class VenueController {
 		return "venue";
 	}
 	
+	// Venue details with date picker
 	@GetMapping("/{id}")
 	public String getVenueDetails(
 	    Model model,

@@ -34,6 +34,7 @@ public class Food {
 	@Column(name = "restriction")
 	private Set<String> restrictions;
 
+	// Many-to-One relationship with Catering
 	@ManyToOne
 	@JoinColumn(name = "catering_id")
 	private Catering catering;

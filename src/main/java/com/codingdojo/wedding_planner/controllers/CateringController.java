@@ -19,6 +19,7 @@ public class CateringController {
 	@Autowired
 	private VenueRepository venueRepository;
 	
+	// Displays the catering companies available for the venue selected
 	@GetMapping("/{id}")
 	public String getAll(@PathVariable("id") Long venueId, Model model) {
 	    Venue venue = venueRepository.findById(venueId).orElse(null);

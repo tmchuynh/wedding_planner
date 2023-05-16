@@ -57,15 +57,19 @@ public class Venue {
 	@Column(name = "month")
 	private List<String> offPeakSeason;
 
+	// One-to-Many relationship with MonthlyPrice
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
 	private List<MonthlyPrice> monthlyPrices;
 
+	// One-to-Many relationship with Decoration
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
 	private List<Decoration> availableDecor;
 
+	// One-to-Many relationship with GuestRoom
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
 	private List<GuestRoom> guestRooms;
 	
+	// One-to-Many relationship with Catering
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
 	private List<Catering> catering;
 
@@ -204,7 +208,5 @@ public class Venue {
 	    
 	    return null;
 	}
-
-
 
 }

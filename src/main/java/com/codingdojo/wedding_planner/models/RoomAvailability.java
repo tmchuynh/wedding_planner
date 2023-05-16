@@ -34,7 +34,6 @@ public class RoomAvailability {
     	
     }
 
-    // Constructor
     public RoomAvailability(LocalDate date, int roomsAvailable, BigDecimal pricePerNight) {
         this.date = date;
         this.roomsAvailable = roomsAvailable;
@@ -80,7 +79,6 @@ public class RoomAvailability {
 	public void setRoom(GuestRoom room) {
 		this.room = room;
 	}
-	
 
     public boolean isAvailableOnDate(LocalDate selectedDate) {
         return date.equals(selectedDate);

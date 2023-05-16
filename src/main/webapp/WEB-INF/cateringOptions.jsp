@@ -33,6 +33,7 @@
 					<tr class="accordion">
 						<td><span class="arrow">&#x25B6;</span> ${catering.name}</td>
 						<td>$${catering.staff_price}</td>
+						<!-- Displays all the different food restrictions available for the catering company -->
 						<td><c:set var="uniqueRestrictions" value="" /> <c:forEach
 								items="${catering.availableFoods}" var="food">
 								<c:forEach items="${food.restrictions}" var="restriction">

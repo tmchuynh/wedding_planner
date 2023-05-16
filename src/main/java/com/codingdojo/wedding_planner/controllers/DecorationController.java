@@ -19,6 +19,7 @@ public class DecorationController {
 	@Autowired
 	private VenueRepository venueRepository;
 	
+	// Displays decorations available for the selected venue
 	@GetMapping("/{id}")
 	public String getAll(@PathVariable("id") Long venueId, Model model) {
 		Venue venue = venueRepository.findById(venueId).orElse(null);

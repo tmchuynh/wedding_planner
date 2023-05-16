@@ -21,10 +21,14 @@ public class GuestRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    private String name;
 
     private String type;
 
     private int capacity;
+    
+    private String image;
 
     // One-to-Many relationship with RoomAvailability
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -47,6 +51,14 @@ public class GuestRoom {
 		this.id = id;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public Set<RoomAvailability> getAvailabilities() {
 		return availabilities;
 	}
@@ -61,6 +73,14 @@ public class GuestRoom {
 
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getType() {
@@ -87,5 +107,25 @@ public class GuestRoom {
 	    }
 	    return false;
 	}
+	
+	public Set<RoomAvailability> getAvailableRoomsOnDate(LocalDate selectedDate) {
+	    Set<RoomAvailability> availableRooms = new HashSet<>();
+
+	    for (RoomAvailability availability : availabilities) {
+	        if (availability.getDate().equals(selectedDate) && availability.getRoomsAvailable() > 0) {
+	            availableRooms.add(availability);
+
+	            System.out.println(availableRooms.size());
+
+	            // Break the loop when 6 rooms have been added
+	            if (availableRooms.size() == 6) {
+	                break;
+	            }
+	        }
+	    }
+
+	    return availableRooms;
+	}
+
 
 }

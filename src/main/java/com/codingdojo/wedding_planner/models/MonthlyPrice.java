@@ -18,10 +18,6 @@ public class MonthlyPrice {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "venue_id")
-	private Venue venue;
-
 	@Column(name = "month")
 	private String month;
 
@@ -36,6 +32,11 @@ public class MonthlyPrice {
 
 	@Column(name = "is_peak_season")
 	private Boolean peakSeason;
+	
+	// Many-to-One relationship with Venue
+	@ManyToOne
+	@JoinColumn(name = "venue_id")
+	private Venue venue;
 
 	public MonthlyPrice() {
 

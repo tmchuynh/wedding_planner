@@ -22,6 +22,7 @@ public class GuestRoomsController {
 	@Autowired
 	private VenueRepository venueRepository;
 	
+	// Displays available rooms dependent on the selected date from venue details page
 	@GetMapping("/{id}")
 	public String getAll(@PathVariable("id") Long venueId, Model model, HttpSession session) {
 	    Venue venue = venueRepository.findById(venueId).orElse(null);
