@@ -50,19 +50,24 @@ Describe your project
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Feature 1 - Venue Search: Allow users to search and browse wedding venues based on location, capacity, amenities, and availability.
+
+:heavy_check_mark: Feature 2 - Venue Details: Display detailed information about each venue, including photos, description, ratings, reviews, and contact information.
+
+:heavy_check_mark: Feature 3 - Availability Calendar: Provide a calendar view to check the availability of venues for specific dates.
+
+:heavy_check_mark: Feature 4 - Inspiration and Ideas: Provide a gallery of wedding inspiration and ideas, including themes, decorations, and real wedding stories.
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
-
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- Spring Boot (Java)
+- Spring Web MVC (Java)
+- MySQL
+- RESTful APIs for communication between client and server
+- Hibernate (Java)
+- Git (with platforms like GitHub or GitLab)
+- Bootstrap
 
 ## :white_check_mark: Requirements ##
 
