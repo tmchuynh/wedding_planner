@@ -13,6 +13,8 @@ import com.codingdojo.wedding_planner.models.Decoration;
 import com.codingdojo.wedding_planner.models.Venue;
 import com.codingdojo.wedding_planner.repositories.VenueRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/decorations")
 public class DecorationController {
@@ -20,9 +22,10 @@ public class DecorationController {
 	private VenueRepository venueRepository;
 	
 	// Displays decorations available for the selected venue
-	@GetMapping("/{id}")
-	public String getAll(@PathVariable("id") Long venueId, Model model) {
+	@GetMapping("/{venueId}/{cateringId}")
+	public String getAll(@PathVariable("venueId") Long venueId,@PathVariable("cateringId") Long cateringId ,Model model, HttpSession session) {
 		Venue venue = venueRepository.findById(venueId).orElse(null);
+		session.setAttribute("catering", cateringId);
 		if (venue != null) {
 			List<Decoration> decorOptions = venue.getAvailableDecor();
 			model.addAttribute("decorOptions", decorOptions);

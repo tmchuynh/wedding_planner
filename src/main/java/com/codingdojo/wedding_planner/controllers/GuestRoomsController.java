@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.codingdojo.wedding_planner.models.GuestRoom;
 import com.codingdojo.wedding_planner.models.Venue;
@@ -38,6 +40,14 @@ public class GuestRoomsController {
 	        model.addAttribute("selectedDate", selectedDateValue);
 	    }
 	    return "roomOptions";
+	}
+	
+	@PostMapping("/options/{id}/{quantity}")
+	public String updateRoomOptions(@PathVariable("id") Long roomId, @PathVariable("quantity") int quantity, Model mode, HttpSession session) {
+		session.setAttribute("roomDetails", roomId);
+		session.setAttribute("counterNumber", quantity);
+		
+		return "redirect:/quote";
 	}
 
 

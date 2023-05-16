@@ -45,7 +45,7 @@
 								</c:forEach>
 
 							</c:forEach></td>
-						<td><a href="/decorations/${venue.id}"
+						<td><a href="/decorations/${venue.id}/${catering.id}"
 							class="btn btn-primary">Continue</a></td>
 					</tr>
 					<tr class="accordion-content">

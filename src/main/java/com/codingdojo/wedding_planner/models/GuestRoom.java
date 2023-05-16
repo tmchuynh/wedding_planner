@@ -115,8 +115,6 @@ public class GuestRoom {
 	        if (availability.getDate().equals(selectedDate) && availability.getRoomsAvailable() > 0) {
 	            availableRooms.add(availability);
 
-	            System.out.println(availableRooms.size());
-
 	            // Break the loop when 6 rooms have been added
 	            if (availableRooms.size() == 6) {
 	                break;
