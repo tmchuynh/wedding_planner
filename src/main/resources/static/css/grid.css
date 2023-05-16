@@ -1,15 +1,13 @@
 @charset "UTF-8";
 
 .grid-view {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-gap: 20px;
 }
-
 
 .card-img-top {
 	height: 200px;
 	width: auto;
 	object-fit: cover;
 }
-
