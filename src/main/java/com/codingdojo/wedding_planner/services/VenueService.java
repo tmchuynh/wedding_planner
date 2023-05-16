@@ -28,25 +28,6 @@ public class VenueService {
         return venueRepository.save(venue);
     }
 
-    public Venue updateVenue(Long id, Venue venueDetails) throws NotFoundException {
-        Optional<Venue> venueOptional = getVenueById(id);
-        if (venueOptional.isPresent()) {
-            Venue venue = venueOptional.get();
-            venue.setName(venueDetails.getName());
-            venue.setAddress(venueDetails.getAddress());
-            venue.setCity(venueDetails.getCity());
-            venue.setZip_code(venueDetails.getZip_code());
-            venue.setPricePerHour(venueDetails.getPricePerHour());
-            venue.setAvailableFromDate(venueDetails.getAvailableFromDate());
-            venue.setAvailableToDate(venueDetails.getAvailableToDate());
-            venue.setAvailableFoods(venueDetails.getAvailableFoods());
-            return venueRepository.save(venue);
-        } else {
-            throw new NotFoundException();
-        }
-    }
-
-
     public void deleteVenue(Long id) throws NotFoundException {
         Optional<Venue> venueOptional = getVenueById(id);
         venueOptional.ifPresent(venue -> venueRepository.delete(venue));

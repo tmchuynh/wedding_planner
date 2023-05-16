@@ -46,7 +46,7 @@
 
 ## :dart: About ##
 
-Describe your project
+![erd model](src/main/resources/static/images/erd.png)
 
 ## :sparkles: Features ##
 

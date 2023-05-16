@@ -1,14 +1,21 @@
 package com.codingdojo.wedding_planner.models;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -21,31 +28,47 @@ public class Venue {
 
 	private String name;
 
-	private String address;
-
 	private String city;
 
-	private String zip_code;
-	
+	private String state;
+
 	private int capacity;
-
-	private BigDecimal pricePerHour;
-
+	
 	private String image;
 
-	private LocalDateTime availableFromDate;
+	private Double rating;
 
-	private LocalDateTime availableToDate;
+	@ElementCollection
+	@CollectionTable(name = "venue_amenities", joinColumns = @JoinColumn(name = "venue_id"))
+	@Column(name = "amenity")
+	private List<String> amenities;
 
-	private String formattedFromDate;
-    private String formattedToDate;
+	@ElementCollection
+	@CollectionTable(name = "venue_restrictions", joinColumns = @JoinColumn(name = "venue_id"))
+	@Column(name = "restriction")
+	private List<String> restrictions;
 
-	// one to many relationship with food
+	@ElementCollection
+	@CollectionTable(name = "venue_peak_season", joinColumns = @JoinColumn(name = "venue_id"))
+	@Column(name = "month")
+	private List<String> peakSeason;
+
+	@ElementCollection
+	@CollectionTable(name = "venue_off_peak_season", joinColumns = @JoinColumn(name = "venue_id"))
+	@Column(name = "month")
+	private List<String> offPeakSeason;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
-	private List<Food> availableFoods;
-	
+	private List<MonthlyPrice> monthlyPrices;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
 	private List<Decoration> availableDecor;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
+	private List<GuestRoom> guestRooms;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
+	private List<Catering> catering;
 
 	public Venue() {
 
@@ -67,14 +90,6 @@ public class Venue {
 		this.name = name;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public String getCity() {
 		return city;
 	}
@@ -83,12 +98,12 @@ public class Venue {
 		this.city = city;
 	}
 
-	public String getZip_code() {
-		return zip_code;
+	public String getState() {
+		return state;
 	}
 
-	public void setZip_code(String zip_code) {
-		this.zip_code = zip_code;
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public int getCapacity() {
@@ -99,52 +114,28 @@ public class Venue {
 		this.capacity = capacity;
 	}
 
-	public BigDecimal getPricePerHour() {
-		return pricePerHour;
+	public List<String> getPeakSeason() {
+		return peakSeason;
 	}
 
-	public void setPricePerHour(BigDecimal pricePerHour) {
-		this.pricePerHour = pricePerHour;
+	public void setPeakSeason(List<String> peakSeason) {
+		this.peakSeason = peakSeason;
 	}
 
-	public LocalDateTime getAvailableFromDate() {
-		return availableFromDate;
+	public List<String> getOffPeakSeason() {
+		return offPeakSeason;
 	}
 
-	public void setAvailableFromDate(LocalDateTime availableFromDate) {
-		this.availableFromDate = availableFromDate;
+	public void setOffPeakSeason(List<String> offPeakSeason) {
+		this.offPeakSeason = offPeakSeason;
 	}
 
-	public LocalDateTime getAvailableToDate() {
-		return availableToDate;
+	public Double getRating() {
+		return rating;
 	}
 
-	public void setAvailableToDate(LocalDateTime availableToDate) {
-		this.availableToDate = availableToDate;
-	}
-
-	public String getFormattedFromDate() {
-		return formattedFromDate;
-	}
-
-	public void setFormattedFromDate(String formattedFromDate) {
-		this.formattedFromDate = formattedFromDate;
-	}
-
-	public String getFormattedToDate() {
-		return formattedToDate;
-	}
-
-	public void setFormattedToDate(String formattedToDate) {
-		this.formattedToDate = formattedToDate;
-	}
-
-	public List<Food> getAvailableFoods() {
-		return availableFoods;
-	}
-
-	public void setAvailableFoods(List<Food> availableFoods) {
-		this.availableFoods = availableFoods;
+	public void setRating(Double rating) {
+		this.rating = rating;
 	}
 
 	public String getImage() {
@@ -162,4 +153,59 @@ public class Venue {
 	public void setAvailableDecor(List<Decoration> availableDecor) {
 		this.availableDecor = availableDecor;
 	}
+
+	public List<String> getAmenities() {
+		return amenities;
+	}
+
+	public void setAmenities(List<String> amenities) {
+		this.amenities = amenities;
+	}
+
+	public List<String> getRestrictions() {
+		return restrictions;
+	}
+
+	public void setRestrictions(List<String> restrictions) {
+		this.restrictions = restrictions;
+	}
+
+	public List<MonthlyPrice> getMonthlyPrices() {
+		return monthlyPrices;
+	}
+
+	public void setMonthlyPrices(List<MonthlyPrice> monthlyPrices) {
+		this.monthlyPrices = monthlyPrices;
+	}
+
+	public List<GuestRoom> getGuestRooms() {
+		return guestRooms;
+	}
+
+	public void setGuestRooms(List<GuestRoom> guestRooms) {
+		this.guestRooms = guestRooms;
+	}
+
+	public List<Catering> getCatering() {
+		return catering;
+	}
+
+	public void setCatering(List<Catering> catering) {
+		this.catering = catering;
+	}
+
+	public MonthlyPrice getMonthlyPriceForDate(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+	    String selectedMonth = date.getMonth().name();
+	    
+	    for (MonthlyPrice monthlyPrice : monthlyPrices) {
+	        if (monthlyPrice.getMonth().equalsIgnoreCase(selectedMonth)) {
+	            return monthlyPrice;
+	        }
+	    }
+	    
+	    return null;
+	}
+
+
+
 }

@@ -24,10 +24,8 @@ public class Food {
 
 	private String description;
 
+	@Column(name = "price", columnDefinition = "DECIMAL(10,2) DEFAULT 0.00")
 	private double price;
-
-	@Column(name = "formatted_price", columnDefinition = "DECIMAL(10,2) DEFAULT 0.00")
-	private double formattedPrice;
 
 	private String image;
 
@@ -36,13 +34,9 @@ public class Food {
 	@Column(name = "restriction")
 	private Set<String> restrictions;
 
-	// many to one relationship with venue
 	@ManyToOne
-	@JoinColumn(name = "venue_id")
-	private Venue venue;
-
-	@Column(name = "on_change_action", columnDefinition = "TEXT") // Specify the SQL type as TEXT
-    private String onChangeAction;
+	@JoinColumn(name = "catering_id")
+	private Catering catering;
 
 	public Food() {
 
@@ -80,14 +74,6 @@ public class Food {
 		this.price = price;
 	}
 
-	public double getFormattedPrice() {
-		return formattedPrice;
-	}
-
-	public void setFormattedPrice(double formattedPrice) {
-		this.formattedPrice = formattedPrice;
-	}
-
 	public Set<String> getRestrictions() {
 		return restrictions;
 	}
@@ -96,12 +82,12 @@ public class Food {
 		this.restrictions = restrictions;
 	}
 
-	public Venue getVenue() {
-		return venue;
+	public Catering getCatering() {
+		return catering;
 	}
 
-	public void setVenue(Venue venue) {
-		this.venue = venue;
+	public void setCatering(Catering catering) {
+		this.catering = catering;
 	}
 
 	public String getImage() {
@@ -110,14 +96,5 @@ public class Food {
 
 	public void setImage(String image) {
 		this.image = image;
-	}
-	
-	public String getOnChangeAction() {
-        return onChangeAction;
-    }
-
-	public void setOnChangeAction(String action) {
-		this.onChangeAction = action;
-		
 	}
 }
