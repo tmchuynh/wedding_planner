@@ -1,28 +1,28 @@
 .btn-primary {
     border: none;
-    background-color: #C9B037;
+    background-color: #c9b037;
 }
 
 .btn-primary:hover,
 .btn-primary:active {
-    background-color: #AF9500;
+    background-color: #af9500;
 }
 
 .btn-secondary {
     border: none;
     color: black;
-    background-color: #D7D7D7;
+    background-color: #d7d7d7;
 }
 
 .btn-secondary:hover,
 .btn-secondary:active {
-    background-color: #B4B4B4;
+    background-color: #b4b4b4;
 }
 
-input[type=date] {
+input[type="date"] {
     height: 2.4rem;
     border-radius: 5px;
-    border: 0.5px solid #D7D7D7;
+    border: 0.5px solid #d7d7d7;
 }
 
 .main {
@@ -34,7 +34,7 @@ input[type=date] {
 }
 
 .secondary {
-    color: #D7D7D7;
+    color: #d7d7d7;
 }
 
 .secondary-background {

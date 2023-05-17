@@ -14,279 +14,282 @@
 
 			<body>
 				<div class="container-fluid body-container p-4">
-					<img src="/images/extra/logo.png" alt="venue" class="logo">
-					<img src="/images/extra/image4.png" alt="venue" class="image7">
-					<div class="d-flex justify-content-between">
-						<h1 class="main">Your Quote for ${venue != null ? venue.name : ''} on ${date }</h1>
+						<img src="/images/extra/logo.png" alt="venue" class="logo">
+						<img src="/images/extra/image4.png" alt="venue" class="image7">
 						<div class="d-flex justify-content-between">
-							<a class="btn btn-danger m-3" href="/venues">Start Over</a>
+							<h1 class="main">Your Quote for ${venue != null ? venue.name : ''} on ${date }</h1>
+							<div class="d-flex justify-content-between">
+								<a class="btn btn-danger m-3" href="/venues">Start Over</a>
+							</div>
 						</div>
-					</div>
 
-					<div class="container-fluid">
-						<h1>
-							Estimated Total: $<span class="estimatedTotal">0.00</span>
-							<br>
-							Estimated Food Cost: $<span class="estimatedFood">0.00</span>
-							<br>
-							Estimated Hotel Cost: $<span class="estimatedHotel">0.00</span>
-						</h1>
-						<c:if test="${price != null}">
-							<p>
-								Reception Price: $<span class="receptionPrice">${price.receptionStartingPrice}</span>
-							</p>
-							<p>
-								Ceremony Price: $<span class="ceremonyPrice">${price.ceremonyStartingPrice}</span>
-							</p>
-							<p>
-								Bar Price: $<span class="barPrice">${price.barStartingPrice}</span>
-							</p>
-							<c:if test="${price.peakSeason}">
+						<div class="container-fluid">
+							<h1>
+								Estimated Total: $<span class="estimatedTotal">0.00</span>
+								<br>
+								Estimated Food Cost: $<span class="estimatedFood">0.00</span>
+								<br>
+								Estimated Hotel Cost: $<span class="estimatedHotel">0.00</span>
+							</h1>
+							<c:if test="${price != null}">
 								<p>
-									Off Peak Season (
-									<c:forEach items="${venue.offPeakSeason}" var="offPeakSeason">
-										<span>${fn:substring(offPeakSeason, 0, 3)}</span>
-									</c:forEach>
-									)
+									Reception Price: $<span
+										class="receptionPrice">${price.receptionStartingPrice}</span>
 								</p>
-							</c:if>
-							<c:if test="${not price.peakSeason}">
 								<p>
-									Peak Season (
-									<c:forEach items="${venue.peakSeason}" var="peakSeason">
-										<span>${fn:substring(peakSeason, 0, 3)}</span>
-									</c:forEach>
-									)
+									Ceremony Price: $<span class="ceremonyPrice">${price.ceremonyStartingPrice}</span>
 								</p>
-							</c:if>
-
-						</c:if>
-					</div>
-
-					<div class="container-fluid">
-						<table class="table">
-							<thead>
-								<tr class="main">
-									<th>‎Name</th>
-									<th>City</th>
-									<th>State</th>
-									<th>Price</th>
-									<th class="text-center">Rating</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="col-2">${venue.name}${venue.id }</td>
-									<td class="col-1">${venue.city}</td>
-									<td class="col-1">${venue.state}</td>
-									<td class="col-1 venuePrice">$${venue.price }</td>
-									<td class="col-1 text-center">${venue.rating}</td>
-								</tr>
-
-								<tr>
-									<td colspan="7"><img src="/images/venues/${venue.image }" alt="${venue.name }"
-											style="width: 200px; height: 200px; object-fit: cover;"
-											class="img-thumbnail my-3">
-										<h3>Details:</h3>
-										<table class="table table-container1">
-											<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf4">
-											<img src="/images/extra/leaf3.png" alt="venue" class="leaf leaf3">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf32">
-											<img src="/images/extra/leaf5.png" alt="venue" class="leaf leaf5">
-
-											<img src="/images/extra/leaf8.png" alt="venue" class="leaf leaf6">
-											<img src="/images/extra/leaf6.png" alt="venue" class="leaf leaf7">
-											<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf8">
-											<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf9">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf10">
-
-											<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf11">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf12">
-											<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf13">
-											<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf14">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf15">
-
-											<img src="/images/extra/leaf7.png" alt="venue" class="leaf leaf16">
-											<img src="/images/extra/leaf6.png" alt="venue" class="leaf leaf17">
-											<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf18">
-											<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf19">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf20">
-
-											<img src="/images/extra/leaf7.png" alt="venue" class="leaf leaf21">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf22">
-											<img src="/images/extra/leaf6.png" alt="venue" class="leaf leaf23">
-											<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf24">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf25">
-
-											<img src="/images/extra/leaf3.png" alt="venue" class="leaf leaf26">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf27">
-											<img src="/images/extra/leaf6.png" alt="venue" class="leaf leaf28">
-											<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf29">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf30">
-											<thead>
-												<tr class="main">
-													<th>Amenities</th>
-													<th>Restrictions</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>
-														<c:forEach items="${venue.amenities}" var="amenity">
-															<p>
-																<i class="bi bi-check-lg"></i>${amenity}
-															</p>
-															<br>
-														</c:forEach>
-													</td>
-													<td>
-														<c:forEach items="${venue.restrictions}" var="restriction">
-															<p>
-																<i class="bi bi-x"></i>${restriction}
-															</p>
-															<br>
-														</c:forEach>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-
-					<div class="container-fluid">
-						<h1>Catering</h1>
-						<table class="table">
-							<thead>
-								<tr class="main">
-									<th>Catering Name</th>
-									<th>Staff Price</th>
-									<th>Available Foods</th>
-									<th></th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>${catering.name}</td>
-									<td>$${catering.staff_price}</td>
-									<!-- Displays all the different food restrictions available for the catering company -->
-									<td>
-										<c:set var="uniqueRestrictions" value="" />
-										<c:forEach items="${catering.availableFoods}" var="food">
-											<c:forEach items="${food.restrictions}" var="restriction">
-												<c:if test="${!uniqueRestrictions.contains(restriction)}">
-													<c:set var="uniqueRestrictions"
-														value="${uniqueRestrictions}${restriction}" />
-													${restriction}
-
-												</c:if>
-											</c:forEach>
+								<p>
+									Bar Price: $<span class="barPrice">${price.barStartingPrice}</span>
+								</p>
+								<c:if test="${price.peakSeason}">
+									<p>
+										Off Peak Season (
+										<c:forEach items="${venue.offPeakSeason}" var="offPeakSeason">
+											<span>${fn:substring(offPeakSeason, 0, 3)}</span>
 										</c:forEach>
-									</td>
-									<th class="foodTotal">$0.00</th>
-								</tr>
-								<tr>
-									<td colspan="7"><img src="/images/catering/${catering.image }"
-											alt="${catering.name }"
-											style="width: 200px; height: 200px; object-fit: cover;"
-											class="img-thumbnail">
-										<table class="table">
-											<thead>
-												<tr>
-													<th></th>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-													<th></th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach items="${catering.availableFoods}" var="food">
+										)
+									</p>
+								</c:if>
+								<c:if test="${not price.peakSeason}">
+									<p>
+										Peak Season (
+										<c:forEach items="${venue.peakSeason}" var="peakSeason">
+											<span>${fn:substring(peakSeason, 0, 3)}</span>
+										</c:forEach>
+										)
+									</p>
+								</c:if>
+
+							</c:if>
+						</div>
+
+						<div class="container-fluid">
+							<table class="table">
+								<thead>
+									<tr class="main">
+										<th>‎Name</th>
+										<th>City</th>
+										<th>State</th>
+										<th>Price</th>
+										<th class="text-center">Rating</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="col-2">${venue.name}${venue.id }</td>
+										<td class="col-1">${venue.city}</td>
+										<td class="col-1">${venue.state}</td>
+										<td class="col-1 venuePrice">$${venue.price }</td>
+										<td class="col-1 text-center">${venue.rating}</td>
+									</tr>
+
+									<tr>
+										<td colspan="7"><img src="/images/venues/${venue.image }" alt="${venue.name }"
+												style="width: 200px; height: 200px; object-fit: cover;"
+												class="img-thumbnail my-3">
+											<h3>Details:</h3>
+											<table class="table table-container1">
+												<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf4">
+												<img src="/images/extra/leaf3.png" alt="venue" class="leaf leaf3">
+												<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf32">
+												<img src="/images/extra/leaf5.png" alt="venue" class="leaf leaf5">
+
+												<img src="/images/extra/leaf8.png" alt="venue" class="leaf leaf6">
+												<img src="/images/extra/leaf6.png" alt="venue" class="leaf leaf7">
+												<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf8">
+												<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf9">
+												<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf10">
+
+												<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf11">
+												<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf12">
+												<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf13">
+												<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf14">
+												<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf15">
+
+												<img src="/images/extra/leaf7.png" alt="venue" class="leaf leaf16">
+												<img src="/images/extra/leaf6.png" alt="venue" class="leaf leaf17">
+												<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf18">
+												<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf19">
+												<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf20">
+
+												<img src="/images/extra/leaf7.png" alt="venue" class="leaf leaf21">
+												<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf22">
+												<img src="/images/extra/leaf6.png" alt="venue" class="leaf leaf23">
+												<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf24">
+												<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf25">
+
+												<img src="/images/extra/leaf3.png" alt="venue" class="leaf leaf26">
+												<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf27">
+												<img src="/images/extra/leaf6.png" alt="venue" class="leaf leaf28">
+												<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf29">
+												<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf30">
+												<thead>
+													<tr class="main">
+														<th>Amenities</th>
+														<th>Restrictions</th>
+													</tr>
+												</thead>
+												<tbody>
 													<tr>
-														<td><img src="/images/food/${food.image }" alt="${food.name }"
-																style="width: 150px; height: 150px; object-fit: cover;"
-																class="img-thumbnail"></td>
-														<td>${food.name}</td>
-														<td>${food.description}</td>
-														<td>$${food.price}</td>
-														<td><input type="number" class="col-xs-2 form-control"
-																style="width: 4rem;" value="0"
-																onchange="updateTotalPrice(this)"
-																data-previous-value="0">
+														<td>
+															<c:forEach items="${venue.amenities}" var="amenity">
+																<p>
+																	<i class="bi bi-check-lg"></i>${amenity}
+																</p>
+																<br>
+															</c:forEach>
+														</td>
+														<td>
+															<c:forEach items="${venue.restrictions}" var="restriction">
+																<p>
+																	<i class="bi bi-x"></i>${restriction}
+																</p>
+																<br>
+															</c:forEach>
 														</td>
 													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-
-					<div class="container-fluid p-4">
-						<div class="d-flex justify-content-between">
-							<h1>Room Options</h1>
-							<h5 class="roomTotal mt-auto">$0.00</h5>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
-						<hr>
-						<c:if test="${not empty roomOptions}">
-							<div class="row">
-								<c:forEach items="${roomOptions}" var="room">
-									<c:if test="${room.isAvailableOnDate(selectedDate)}">
-										<div class="col-md-6 col-lg-4">
-											<div class="room-card card m-3">
-												<img src="/images/rooms/${room.image}" alt="${room.name}"
-													class="card-img-top" style="height: 15rem; object-fit: cover;">
-												<div class="card-body">
-													<h5 class="card-title main" style="text-transform: uppercase;">
-														${room.type}</h5>
-													<div class="room-details">
-														<p>Capacity: ${room.capacity}</p>
-														<p>Available on:</p>
-														<input type="hidden" name="id" class="roomId"
-															value="${room.id}">
-														<c:set var="availableRooms"
-															value="${room.getAvailableRoomsOnDate(selectedDate)}" />
-														<c:if test="${not empty availableRooms}">
-															<c:forEach items="${availableRooms}" var="availableRoom">
-																<ul>
-																	<li>Date: ${availableRoom.date}</li>
-																	<li>Rooms Available: <span
-																			class="roomsAvailable">${availableRoom.roomsAvailable}</span>
-																	</li>
-																	<li>Price per Night: $<span
-																			class="pricePerNight">${availableRoom.pricePerNight}</span>
-																	</li>
-																</ul>
-															</c:forEach>
-															<div class="d-flex justify-content-between">
-																<label>Nights:</label> <input type="number"
-																	class="col-xs-2 form-control" style="width: 4rem;"
-																	value="0" id="numberOfNights"
-																	onchange="checkNights(this)"
-																	data-previous-value="0"> <label>Rooms:</label>
-																<input type="number" class="col-xs-2 form-control"
-																	style="width: 4rem;" value="0"
-																	onchange="updateRooms(this)"
-																	data-previous-value="0">
 
-															</div>
-														</c:if>
+						<div class="container-fluid">
+							<h1>Catering</h1>
+							<table class="table">
+								<thead>
+									<tr class="main">
+										<th>Catering Name</th>
+										<th>Staff Price</th>
+										<th>Available Foods</th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>${catering.name}</td>
+										<td>$${catering.staff_price}</td>
+										<!-- Displays all the different food restrictions available for the catering company -->
+										<td>
+											<c:set var="uniqueRestrictions" value="" />
+											<c:forEach items="${catering.availableFoods}" var="food">
+												<c:forEach items="${food.restrictions}" var="restriction">
+													<c:if test="${!uniqueRestrictions.contains(restriction)}">
+														<c:set var="uniqueRestrictions"
+															value="${uniqueRestrictions}${restriction}" />
+														${restriction}
+
+													</c:if>
+												</c:forEach>
+											</c:forEach>
+										</td>
+										<th class="foodTotal">$0.00</th>
+									</tr>
+									<tr>
+										<td colspan="7"><img src="/images/catering/${catering.image }"
+												alt="${catering.name }"
+												style="width: 200px; height: 200px; object-fit: cover;"
+												class="img-thumbnail">
+											<table class="table">
+												<thead>
+													<tr>
+														<th></th>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Price</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach items="${catering.availableFoods}" var="food">
+														<tr>
+															<td><img src="/images/food/${food.image }"
+																	alt="${food.name }"
+																	style="width: 150px; height: 150px; object-fit: cover;"
+																	class="img-thumbnail"></td>
+															<td>${food.name}</td>
+															<td>${food.description}</td>
+															<td>$${food.price}</td>
+															<td><input type="number" class="col-xs-2 form-control"
+																	style="width: 4rem;" value="0"
+																	onchange="updateTotalPrice(this)"
+																	data-previous-value="0">
+															</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="container-fluid p-4">
+							<div class="d-flex justify-content-between">
+								<h1>Room Options</h1>
+								<h5 class="roomTotal mt-auto">$0.00</h5>
+							</div>
+							<hr>
+							<c:if test="${not empty roomOptions}">
+								<div class="row">
+									<c:forEach items="${roomOptions}" var="room">
+										<c:if test="${room.isAvailableOnDate(selectedDate)}">
+											<div class="col-md-6 col-lg-4">
+												<div class="room-card card m-3">
+													<img src="/images/rooms/${room.image}" alt="${room.name}"
+														class="card-img-top" style="height: 15rem; object-fit: cover;">
+													<div class="card-body">
+														<h5 class="card-title main" style="text-transform: uppercase;">
+															${room.type}</h5>
+														<div class="room-details">
+															<p>Capacity: ${room.capacity}</p>
+															<p>Available on:</p>
+															<input type="hidden" name="id" class="roomId"
+																value="${room.id}">
+															<c:set var="availableRooms"
+																value="${room.getAvailableRoomsOnDate(selectedDate)}" />
+															<c:if test="${not empty availableRooms}">
+																<c:forEach items="${availableRooms}"
+																	var="availableRoom">
+																	<ul>
+																		<li>Date: ${availableRoom.date}</li>
+																		<li>Rooms Available: <span
+																				class="roomsAvailable">${availableRoom.roomsAvailable}</span>
+																		</li>
+																		<li>Price per Night: $<span
+																				class="pricePerNight">${availableRoom.pricePerNight}</span>
+																		</li>
+																	</ul>
+																</c:forEach>
+																<div class="d-flex justify-content-between">
+																	<label>Nights:</label> <input type="number"
+																		class="col-xs-2 form-control"
+																		style="width: 4rem;" value="0"
+																		id="numberOfNights" onchange="checkNights(this)"
+																		data-previous-value="0"> <label>Rooms:</label>
+																	<input type="number" class="col-xs-2 form-control"
+																		style="width: 4rem;" value="0"
+																		onchange="updateRooms(this)"
+																		data-previous-value="0">
+
+																</div>
+															</c:if>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-									</c:if>
-								</c:forEach>
-							</div>
-						</c:if>
-					</div>
+										</c:if>
+									</c:forEach>
+								</div>
+							</c:if>
+						</div>
 
-
+					
 
 				</div>
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
@@ -298,6 +301,36 @@
 					document.addEventListener('DOMContentLoaded', function () {
 						calculateEstimatedTotal()
 					});
+
+					$(function() {
+						var body = $('#starshine'),
+							template = $('.template.shine'),
+							stars =  500,
+							sparkle = 20;
+						
+						  
+						var size = 'small';
+						var createStar = function() {
+						  template.clone().removeAttr('id').css({
+							top: (Math.random() * 100) + '%',
+							left: (Math.random() * 100) + '%',
+							webkitAnimationDelay: (Math.random() * sparkle) + 's',
+							mozAnimationDelay: (Math.random() * sparkle) + 's'
+						  }).addClass(size).appendTo(body);
+						};
+					   
+						for(var i = 0; i < stars; i++) {
+						  if(i % 2 === 0) {
+							size = 'small';
+						  } else if(i % 3 === 0) {
+							size = 'medium';
+						  } else {
+							size = 'large';
+						  }
+						  
+						  createStar();
+						}
+					  });
 
 					function calculateEstimatedTotal() {
 						var reception = parseFloat(document.querySelector('.receptionPrice').innerHTML);
@@ -314,6 +347,11 @@
 						document.querySelector('.estimatedHotel').innerHTML = room;
 					}
 
+					// Updates the total price of a food item based on its quantity.
+					// 
+					// input: the input element that contains the quantity of the food item
+					// 
+					// returns: nothing
 					function updateTotalPrice(input) {
 						var price = parseFloat(input.parentNode.previousElementSibling.innerHTML.slice(1));
 						var quantity = parseInt(input.value);
@@ -337,7 +375,12 @@
 						}
 					}
 
-
+					/**
+					 * Updates the displayed room total based on the number of nights entered.
+					 * If the number of nights entered is negative, the previous value is restored and the room total is set to $0.00.
+					 * 
+					 * @param {HTMLInputElement} input - the input element containing the number of nights entered
+					 */
 					function checkNights(input) {
 						var nights = parseInt(input.value);
 
@@ -346,6 +389,11 @@
 							document.querySelector('roomTotal').innerHTML = '$0.00';
 						}
 					}
+					// Updates the total price for a hotel room based on the number of rooms and nights entered.
+					// 
+					// @param {Object} input - The input element containing the number of rooms entered.
+					// 
+					// @returns {void}
 					function updateRooms(input) {
 						var rooms = parseInt(input.value);
 						var pricePerNight = parseFloat(document.querySelector('.pricePerNight').innerHTML);
