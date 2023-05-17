@@ -48,6 +48,9 @@
 
 This project is a wedding planning application that aims to provide a comprehensive platform for couples and wedding planners to manage various aspects of wedding planning. The application facilitates the organization, coordination, and tracking of wedding-related tasks, vendors, guests, and expenses. Overall, this project aims to simplify and streamline the wedding planning process, providing a centralized platform for couples, wedding planners, and vendors to collaborate, manage tasks, and create memorable experiences.
 
+
+![erd image](src/main/resources/static/images/erd.png)
+
 ## :sparkles: Features ##
 
 :heavy_check_mark: Feature 1 - Venue Search: Allow users to search and browse wedding venues based on location, capacity, amenities, and availability.
