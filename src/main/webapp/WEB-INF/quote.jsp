@@ -19,10 +19,23 @@
 		</div>
 
 		<div class="container-fluid">
+			<h1>
+				Estimated Total: $<span class="estimatedTotal">0.00</span>
+				<br>
+				Estimated Food Cost: $<span class="estimatedFood">0.00</span>
+				<br>
+				Estimated Hotel Cost: $<span class="estimatedHotel">0.00</span>
+			</h1>
 			<c:if test="${price != null}">
-				<p>Reception Price: $${price.receptionStartingPrice}</p>
-				<p>Ceremony Price: $${price.ceremonyStartingPrice}</p>
-				<p>Bar Price: $${price.barStartingPrice}</p>
+				<p>
+					Reception Price: $<span class="receptionPrice">${price.receptionStartingPrice}</span>
+				</p>
+				<p>
+					Ceremony Price: $<span class="ceremonyPrice">${price.ceremonyStartingPrice}</span>
+				</p>
+				<p>
+					Bar Price: $<span class="barPrice">${price.barStartingPrice}</span>
+				</p>
 				<c:if test="${price.peakSeason}">
 					<p>
 						Off Peak Season (
@@ -52,18 +65,17 @@
 						<th>‎Name</th>
 						<th>City</th>
 						<th>State</th>
+						<th>Price</th>
 						<th class="text-center">Rating</th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td class="col-2">${venue.name} ${venue.id }</td>
+						<td class="col-2">${venue.name}${venue.id }</td>
 						<td class="col-1">${venue.city}</td>
 						<td class="col-1">${venue.state}</td>
+						<td class="col-1 venuePrice">$${venue.price }</td>
 						<td class="col-1 text-center">${venue.rating}</td>
-						<td class="col-1 text-center"><a class="btn btn-primary"
-							href="/venues/${venue.id}">Continue</a></td>
 					</tr>
 
 					<tr>
@@ -100,6 +112,127 @@
 			</table>
 		</div>
 
+		<div class="container-fluid">
+			<h1>Catering</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Catering Name</th>
+						<th>Staff Price</th>
+						<th>Available Foods</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>${catering.name}</td>
+						<td>$${catering.staff_price}</td>
+						<!-- Displays all the different food restrictions available for the catering company -->
+						<td><c:set var="uniqueRestrictions" value="" /> <c:forEach
+								items="${catering.availableFoods}" var="food">
+								<c:forEach items="${food.restrictions}" var="restriction">
+									<c:if test="${!uniqueRestrictions.contains(restriction)}">
+										<c:set var="uniqueRestrictions"
+											value="${uniqueRestrictions}${restriction}" />
+	           							 ${restriction}
+
+						        </c:if>
+								</c:forEach>
+							</c:forEach></td>
+						<th class="foodTotal">$0.00</th>
+					</tr>
+					<tr>
+						<td colspan="7"><img
+							src="/images/catering/${catering.image }" alt="${catering.name }"
+							style="width: 200px; height: 200px; object-fit: cover;"
+							class="img-thumbnail">
+							<table class="table">
+								<thead>
+									<tr>
+										<th></th>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Price</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${catering.availableFoods}" var="food">
+										<tr>
+											<td><img src="/images/food/${food.image }"
+												alt="${food.name }"
+												style="width: 150px; height: 150px; object-fit: cover;"
+												class="img-thumbnail"></td>
+											<td>${food.name}</td>
+											<td>${food.description}</td>
+											<td>$${food.price}</td>
+											<td><input type="number" class="col-xs-2 form-control"
+												style="width: 4rem;" value="0"
+												onchange="updateTotalPrice(this)" data-previous-value="0">
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="container-fluid p-4">
+			<div class="d-flex justify-content-between">
+				<h1>Room Options</h1>
+				<h5 class="roomTotal mt-auto">$0.00</h5>
+			</div>
+			<hr>
+			<c:if test="${not empty roomOptions}">
+				<div class="row">
+					<c:forEach items="${roomOptions}" var="room">
+						<c:if test="${room.isAvailableOnDate(selectedDate)}">
+							<div class="col-md-6 col-lg-4">
+								<div class="room-card card m-3">
+									<img src="/images/rooms/${room.image}" alt="${room.name}"
+										class="card-img-top" style="height: 15rem; object-fit: cover;">
+									<div class="card-body">
+										<h5 class="card-title" style="text-transform: uppercase;">${room.type}</h5>
+										<div class="room-details">
+											<p>Capacity: ${room.capacity}</p>
+											<p>Available on:</p>
+											<input type="hidden" name="id" class="roomId"
+												value="${room.id}">
+											<c:set var="availableRooms"
+												value="${room.getAvailableRoomsOnDate(selectedDate)}" />
+											<c:if test="${not empty availableRooms}">
+												<c:forEach items="${availableRooms}" var="availableRoom">
+													<ul>
+														<li>Date: ${availableRoom.date}</li>
+														<li>Rooms Available: <span class="roomsAvailable">${availableRoom.roomsAvailable}</span></li>
+														<li>Price per Night: $<span class="pricePerNight">${availableRoom.pricePerNight}</span></li>
+													</ul>
+												</c:forEach>
+												<div class="d-flex justify-content-between">
+													<label>Nights:</label> <input type="number"
+														class="col-xs-2 form-control" style="width: 4rem;"
+														value="0" id="numberOfNights" onchange="checkNights(this)"
+														data-previous-value="0"> <label>Rooms:</label> <input
+														type="number" class="col-xs-2 form-control"
+														style="width: 4rem;" value="0"
+														onchange="updateRooms(this)" data-previous-value="0">
+
+												</div>
+											</c:if>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+			</c:if>
+		</div>
+
+
 
 	</div>
 	<script
@@ -109,5 +242,90 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		type="text/javascript"></script>
 	<script src="/js/accordion.js" type="text/javascript"></script>
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		calculateEstimatedTotal()
+	});
+	
+	function calculateEstimatedTotal() {
+		  var reception = parseFloat(document.querySelector('.receptionPrice').innerHTML);
+		  var ceremony = parseFloat(document.querySelector('.ceremonyPrice').innerHTML);
+		  var bar = parseFloat(document.querySelector('.barPrice').innerHTML);
+		  var venue = parseFloat(document.querySelector('.venuePrice').innerHTML.slice(1));
+		  var food = parseFloat(document.querySelector('.foodTotal').innerHTML.slice(1));
+		  var room = parseFloat(document.querySelector('.roomTotal').innerHTML.slice(1));
+
+		  var estimatedTotal = reception + ceremony + bar + venue + food + room;
+
+		  document.querySelector('.estimatedTotal').innerHTML = estimatedTotal.toFixed(2);
+		  document.querySelector('.estimatedFood').innerHTML = food;
+		  document.querySelector('.estimatedHotel').innerHTML = room;
+		}
+	
+	function updateTotalPrice(input) {
+		  var price = parseFloat(input.parentNode.previousElementSibling.innerHTML.slice(1));
+		  var quantity = parseInt(input.value);
+		  var totalPrice = price * quantity;
+
+		  var currentPrice = parseFloat(document.querySelector('.foodTotal').innerHTML.slice(1));
+		  var estimatedTotal = parseFloat(document.querySelector('.estimatedTotal').innerHTML);
+
+		  // Check if the quantity is not negative and handle decrease in value
+		  if (quantity >= 0) {
+		    var updatedPrice = currentPrice + totalPrice;
+		    if (quantity < input.dataset.previousValue) {
+		      updatedPrice -= price * (input.dataset.previousValue - quantity);
+		    }
+		    document.querySelector('.foodTotal').innerHTML = '$' + updatedPrice.toFixed(2);
+		    calculateEstimatedTotal();
+		    input.dataset.previousValue = quantity;
+		  } else {
+		    // Reset the input value to the previous value if a negative number is entered
+		    input.value = input.dataset.previousValue;
+		  }
+		}
+
+		
+		function checkNights(input) {
+			var nights = parseInt(input.value);
+			
+			if(nights < 0) {
+				input.value = input.dataset.previousValue;
+				document.querySelector('roomTotal').innerHTML = '$0.00';
+			}
+		}
+		function updateRooms(input) {
+			  var rooms = parseInt(input.value);
+			  var pricePerNight = parseFloat(document.querySelector('.pricePerNight').innerHTML);
+			  var roomsAvailable = parseInt(document.querySelector('.roomsAvailable').innerHTML);
+			  var nights = parseInt(document.querySelector('#numberOfNights').value);
+			  
+			  var currentPrice = parseFloat(document.querySelector('.roomTotal').innerHTML.slice(1));
+
+			  // Check if the number of rooms is within the available rooms and is not negative
+			  if (rooms >= 0 && rooms <= roomsAvailable && nights >= 0) {
+			    var updatedPrice = pricePerNight * nights * rooms;
+
+			    if (rooms < input.dataset.previousValue) {
+			      var removedRooms = input.dataset.previousValue - rooms;
+			      updatedPrice -= pricePerNight * nights * removedRooms;
+			    } else if (rooms > input.dataset.previousValue) {
+			      updatedPrice += pricePerNight * nights * (rooms - input.dataset.previousValue);
+			    }
+
+			    document.querySelector('.roomTotal').innerHTML = '$' + updatedPrice.toFixed(2);
+			    calculateEstimatedTotal();
+			    input.dataset.previousValue = rooms;
+			  } else {
+			    // Reset the input value to the previous value if a negative number is entered
+			    document.querySelector('.roomTotal').innerHTML = '$0.00';
+			    input.value = input.dataset.previousValue;
+			    document.querySelector('#numberOfNights').value = document.querySelector('#numberOfNights').dataset.previousValue;
+			  }
+			}
+
+
+
+	</script>
 </body>
 </html>

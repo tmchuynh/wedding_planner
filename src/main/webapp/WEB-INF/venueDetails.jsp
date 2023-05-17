@@ -28,6 +28,7 @@
 		<h3>${venue.name}</h3>
 		<p>City: ${venue.city}</p>
 		<p>State: ${venue.state}</p>
+		<p>Price: $${venue.price }</p>
 
 		<h3>Selected Date: ${date}</h3>
 		<c:if test="${price != null}">

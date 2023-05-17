@@ -37,17 +37,12 @@ public class GuestRoomsController {
 	        model.addAttribute("roomOptions", roomOptions);
 	        model.addAttribute("venue", venue);
 	        model.addAttribute("selectedDate", selectedDateValue);
+	        
+	        session.setAttribute("selectedDate", selectedDateValue);
+	        session.setAttribute("roomOptions", roomOptions);
 	    }
 	    return "roomOptions";
 	}
 	
-	@PostMapping("/options/{id}/{quantity}")
-	public String updateRoomOptions(@PathVariable("id") Long roomId, @PathVariable("quantity") int quantity, Model mode, HttpSession session) {
-		session.setAttribute("roomDetails", roomId);
-		session.setAttribute("counterNumber", quantity);
-		
-		return "redirect:/quote";
-	}
-
 
 }

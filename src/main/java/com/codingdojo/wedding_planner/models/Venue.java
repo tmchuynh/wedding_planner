@@ -36,6 +36,8 @@ public class Venue {
 	private String image;
 
 	private Double rating;
+	
+	private Double price;
 
 	@ElementCollection
 	@CollectionTable(name = "venue_amenities", joinColumns = @JoinColumn(name = "venue_id"))
@@ -195,6 +197,14 @@ public class Venue {
 
 	public void setCatering(List<Catering> catering) {
 		this.catering = catering;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public MonthlyPrice getMonthlyPriceForDate(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {

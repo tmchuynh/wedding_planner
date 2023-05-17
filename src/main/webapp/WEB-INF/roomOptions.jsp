@@ -17,6 +17,7 @@
 				<a class="btn btn-secondary m-3" href="/venues">Back to Venue
 					List</a> <a class="btn btn-secondary m-3" href="/venues/${venue.id }">Pick
 					Another Date</a>
+				<a class="btn btn-primary m-3" href="/quote/${venue.id }">Continue</a>
 			</div>
 		</div>
 	</div>
@@ -36,8 +37,6 @@
 								<div class="card-body">
 									<h5 class="card-title" style="text-transform: uppercase;">${room.type}</h5>
 									<div class="room-details">
-										<form class="roomOptionsForm" action="/rooms/options"
-											method="post">
 											<p>Capacity: ${room.capacity}</p>
 											<p>Available on:</p>
 											<input type="hidden" name="id" class="roomId"
@@ -51,27 +50,8 @@
 														<li>Rooms Available: ${availableRoom.roomsAvailable}</li>
 														<li>Price per Night: $${availableRoom.pricePerNight}</li>
 													</ul>
-													
-													<input type="hidden" id="quantity" name="quantity"
-														value="0">
-													<div class="input-group">
-														<span class="input-group-btn">
-															<button type="button" class="btn btn-danger btn-number"
-																data-type="minus" data-field="quant[2]">-</button>
-														</span> <input type="text" name="quant[2]"
-															class="form-control input-number" value="0" min="0"
-															max="${availableRoom.roomsAvailable}"
-															onchange="updateQuantity(this.value)"> <span
-															class="input-group-btn">
-															<button type="button" class="btn btn-success btn-number"
-																data-type="plus" data-field="quant[2]">+</button>
-														</span>
-													</div>
 												</c:forEach>
 											</c:if>
-											<button class="btn btn-primary m-3" type="submit">Continue</button>
-										</form>
-
 									</div>
 								</div>
 							</div>
@@ -82,57 +62,6 @@
 		</c:if>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-	<script>
-		window.addEventListener("DOMContentLoaded",
-				function() {
-					var initialValue = document
-							.querySelector("input[name='quant[2]']").value;
-					updateQuantity(initialValue);
-				});
-		$(document).ready(function() {
-			$('.btn-number').click(function(e) {
-				e.preventDefault();
-
-				var fieldName = $(this).attr('data-field');
-				var type = $(this).attr('data-type');
-				var input = $(this).closest('.input-group').find('input');
-				var currentVal = parseInt(input.val());
-
-				if (!isNaN(currentVal)) {
-					if (type == 'minus') {
-						if (currentVal > input.attr('min')) {
-							input.val(currentVal - 1).change();
-						}
-						if (parseInt(input.val()) == input.attr('min')) {
-							$(this).attr('disabled', true);
-						}
-
-					} else if (type == 'plus') {
-						if (currentVal < input.attr('max')) {
-							input.val(currentVal + 1).change();
-						}
-						if (parseInt(input.val()) == input.attr('max')) {
-							$(this).attr('disabled', true);
-						}
-					}
-				} else {
-					input.val(0);
-				}
-			});
-
-			function updateQuantity(value) {
-				document.getElementById("quantity").value = value;
-			}
-
-			$('.roomOptionsForm').submit(function() {
-				var quantity = $('#quantity').val();
-				var roomID = $('.roomId').val();
-				var action = '/rooms/options/' + roomID + '/' + quantity;
-				$(this).attr('action', action);
-			});
-		});
-	</script>
 
 
 
