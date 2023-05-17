@@ -7,6 +7,7 @@
 			<meta charset="UTF-8">
 			<title>Catering Options</title>
 			<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
 			<link rel="stylesheet" type="text/css" href="/css/venue.css">
 		</head>
 
@@ -14,7 +15,7 @@
 			<div class="container-fluid body-container p-4">
 				<img src="/images/extra/image4.png" alt="venue" class="image2">
 				<div class="d-flex justify-content-between">
-					<h1>Catering Options for ${venue != null ? venue.name : ''}</h1>
+					<h1 class="main">Catering Options for ${venue != null ? venue.name : ''}</h1>
 					<div class="d-flex justify-content-between">
 						<a class="btn btn-secondary m-3" href="/venues">Back to Venue
 							List</a>
@@ -23,7 +24,7 @@
 
 				<table class="table">
 					<thead>
-						<tr>
+						<tr class="main">
 							<th>Catering Name</th>
 							<th>Staff Price</th>
 							<th>Available Foods</th>

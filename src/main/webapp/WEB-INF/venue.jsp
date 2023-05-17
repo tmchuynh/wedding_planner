@@ -10,18 +10,19 @@
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
 				integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 				crossorigin="anonymous">
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
 			<link rel="stylesheet" type="text/css" href="/css/accordian.css">
 			<link rel="stylesheet" type="text/css" href="/css/venue.css">
 		</head>
 
 		<body>
 			<div class="container-fluid body-container p-4">
-				<h1>Wedding Planner</h1>
+				<h1 class="main">Wedding Planner</h1>
 				<h2>Venues</h2>
 
 				<table class="table table-hover">
 					<thead>
-						<tr>
+						<tr class="main">
 							<th>‎&#160;&#160;&#160;&#160;&#160;Name</th>
 							<th>City</th>
 							<th>State</th>

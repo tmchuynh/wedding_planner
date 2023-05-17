@@ -8,6 +8,7 @@
 				<meta charset="UTF-8">
 				<title>Quote</title>
 				<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+				<link rel="stylesheet" type="text/css" href="/css/main.css">
 				<link rel="stylesheet" type="text/css" href="/css/venue.css">
 			</head>
 
@@ -16,7 +17,7 @@
 					<img src="/images/extra/logo.png" alt="venue" class="logo">
 					<img src="/images/extra/image4.png" alt="venue" class="image7">
 					<div class="d-flex justify-content-between">
-						<h1>Your Quote for ${venue != null ? venue.name : ''} on ${date }</h1>
+						<h1 class="main">Your Quote for ${venue != null ? venue.name : ''} on ${date }</h1>
 						<div class="d-flex justify-content-between">
 							<a class="btn btn-danger m-3" href="/venues">Start Over</a>
 						</div>
@@ -65,7 +66,7 @@
 					<div class="container-fluid">
 						<table class="table">
 							<thead>
-								<tr>
+								<tr class="main">
 									<th>‎Name</th>
 									<th>City</th>
 									<th>State</th>
@@ -87,10 +88,10 @@
 											style="width: 200px; height: 200px; object-fit: cover;"
 											class="img-thumbnail my-3">
 										<h3>Details:</h3>
-										<table class="table table-container">
+										<table class="table table-container1">
 											<img src="/images/extra/leaf4.png" alt="venue" class="leaf leaf4">
 											<img src="/images/extra/leaf3.png" alt="venue" class="leaf leaf3">
-											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf2">
+											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf32">
 											<img src="/images/extra/leaf5.png" alt="venue" class="leaf leaf5">
 
 											<img src="/images/extra/leaf8.png" alt="venue" class="leaf leaf6">
@@ -123,7 +124,7 @@
 											<img src="/images/extra/leaf1.png" alt="venue" class="leaf leaf29">
 											<img src="/images/extra/leaf2.png" alt="venue" class="leaf leaf30">
 											<thead>
-												<tr>
+												<tr class="main">
 													<th>Amenities</th>
 													<th>Restrictions</th>
 												</tr>
@@ -159,7 +160,7 @@
 						<h1>Catering</h1>
 						<table class="table">
 							<thead>
-								<tr>
+								<tr class="main">
 									<th>Catering Name</th>
 									<th>Staff Price</th>
 									<th>Available Foods</th>
@@ -241,7 +242,7 @@
 												<img src="/images/rooms/${room.image}" alt="${room.name}"
 													class="card-img-top" style="height: 15rem; object-fit: cover;">
 												<div class="card-body">
-													<h5 class="card-title" style="text-transform: uppercase;">
+													<h5 class="card-title main" style="text-transform: uppercase;">
 														${room.type}</h5>
 													<div class="room-details">
 														<p>Capacity: ${room.capacity}</p>

@@ -1,6 +1,5 @@
-
 .body-container,
-.table-container {
+.table-container1{
     positition: relative;
 }
 
@@ -16,7 +15,7 @@
     bottom: -5rem;
 }
 
-.leaf2 {
+.leaf32 {
     left: 2rem;
 }
 
@@ -135,7 +134,7 @@
 
 .image1,
 .image2 {
-    transform:rotate(180deg);
+    transform: rotate(180deg);
     position: absolute;
     z-index: -1;
     top: -9rem;
@@ -150,7 +149,7 @@
 }
 
 .image3 {
-    transform:rotate(90deg);
+    transform: rotate(90deg);
     position: absolute;
     z-index: -1;
     top: -3rem;

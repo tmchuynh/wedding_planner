@@ -1,0 +1,42 @@
+.btn-primary {
+    border: none;
+    background-color: #C9B037;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #AF9500;
+}
+
+.btn-secondary {
+    border: none;
+    color: black;
+    background-color: #D7D7D7;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active {
+    background-color: #B4B4B4;
+}
+
+input[type=date] {
+    height: 2.4rem;
+    border-radius: 5px;
+    border: 0.5px solid #D7D7D7;
+}
+
+.main {
+    color: #e9a718;
+}
+
+.main-background {
+    background-color: #e9a718bd;
+}
+
+.secondary {
+    color: #D7D7D7;
+}
+
+.secondary-background {
+    background-color: #d7d7d7b7;
+}

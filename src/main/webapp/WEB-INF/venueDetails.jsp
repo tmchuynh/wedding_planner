@@ -9,6 +9,7 @@
 				<meta charset="UTF-8">
 				<title>Venue Details</title>
 				<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+				<link rel="stylesheet" type="text/css" href="/css/main.css">
 				<link rel="stylesheet" type="text/css" href="/css/grid.css">
 				<link rel="stylesheet" type="text/css" href="/css/venue.css">
 			</head>
@@ -17,7 +18,7 @@
 				<div class="container-fluid body-container p-4">
 					<img src="/images/extra/image3.png" alt="venue" class="image1">
 					<div class="d-flex justify-content-between">
-						<h1>${venue != null ? venue.name : ''} Details</h1>
+						<h1 class="main">${venue != null ? venue.name : ''} Details</h1>
 						<div class="d-flex justify-content-between">
 							<a class="btn btn-secondary m-3" href="/venues">Back to Venue List</a>
 							<a class="btn btn-primary m-3" href="/catering/${venue.id }">Continue</a>
@@ -29,12 +30,12 @@
 							class="btn btn-primary">
 					</form>
 					<hr>
-					<h3>${venue.name}</h3>
+					<h3 class="main">${venue.name}</h3>
 					<p>City: ${venue.city}</p>
 					<p>State: ${venue.state}</p>
 					<p>Price: $${venue.price }</p>
 
-					<h3>Selected Date: ${date}</h3>
+					<h3 class="main">Selected Date: ${date}</h3>
 					<c:if test="${price != null}">
 						<p>Reception Price: $${price.receptionStartingPrice}</p>
 						<p>Ceremony Price: $${price.ceremonyStartingPrice}</p>
@@ -62,7 +63,7 @@
 
 					<table class="table">
 						<thead>
-							<tr>
+							<tr class="main">
 								<th>Amenities</th>
 								<th>Restrictions</th>
 							</tr>

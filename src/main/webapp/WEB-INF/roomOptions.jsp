@@ -7,6 +7,7 @@
 			<meta charset="UTF-8">
 			<title>Rooms</title>
 			<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
 			<link rel="stylesheet" type="text/css" href="/css/venue.css">
 		</head>
 
@@ -14,7 +15,7 @@
 
 			<div class="container-fluid p-4">
 				<div class="d-flex justify-content-between">
-					<h1>Available Rooms for ${venue != null ? venue.name : ''}</h1>
+					<h1 class="main">Available Rooms for ${venue != null ? venue.name : ''}</h1>
 					<div class="d-flex justify-content-between">
 						<a class="btn btn-secondary m-3" href="/venues">Back to Venue
 							List</a> <a class="btn btn-secondary m-3" href="/venues/${venue.id }">Pick
@@ -24,10 +25,8 @@
 				</div>
 			</div>
 
-			<div class="container-fluid body-container p-4">
+			<div class="container-fluid body-container">
 				<img src="/images/extra/image3.png" alt="venue" class="image1">
-				<h1>Room Options</h1>
-				<hr>
 				<c:if test="${not empty roomOptions}">
 					<div class="row">
 						<c:forEach items="${roomOptions}" var="room">
@@ -38,7 +37,7 @@
 										<img src="/images/rooms/${room.image}" alt="${room.name}" class="card-img-top"
 											style="height: 15rem; object-fit: cover;">
 										<div class="card-body">
-											<h5 class="card-title" style="text-transform: uppercase;">${room.type}</h5>
+											<h5 class="card-title main" style="text-transform: uppercase;">${room.type}</h5>
 											<div class="room-details">
 												<p>Capacity: ${room.capacity}</p>
 												<p>Available on:</p>
