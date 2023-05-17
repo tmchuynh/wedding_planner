@@ -1,5 +1,4 @@
-.body-container,
-.table-container1{
+.body-container{
     positition: relative;
 }
 
@@ -8,128 +7,6 @@
     z-index: -1;
     top: -5rem;
     right: 19rem;
-}
-
-.leaf {
-    position: absolute;
-    bottom: -5rem;
-}
-
-.leaf32 {
-    left: 2rem;
-}
-
-.leaf3 {
-    left: 14rem;
-}
-
-.leaf4 {
-    left: 6rem;
-}
-
-.leaf5 {
-    left: 9rem;
-}
-
-.leaf6 {
-    left: 36rem;
-}
-
-.leaf7 {
-    left: 13rem;
-}
-
-.leaf8 {
-    left: 28rem;
-}
-
-.leaf9 {
-    left: 21rem;
-}
-
-.leaf10 {
-    transform: rotate(180deg);
-    left: 24rem;
-}
-
-.leaf11 {
-    left: 107rem;
-}
-
-.leaf12 {
-    left: 83rem;
-}
-
-.leaf13 {
-    left: 86rem;
-}
-
-.leaf14 {
-    left: 97rem;
-}
-
-.leaf15 {
-    left: 106rem;
-}
-
-.leaf16 {
-    left: 65rem;
-}
-
-.leaf17 {
-    left: 32rem;
-}
-
-.leaf18 {
-    left: 101rem;
-}
-
-.leaf19 {
-    left: 71rem;
-}
-
-.leaf20 {
-    left: 41rem;
-}
-
-.leaf21 {
-    left: 41rem;
-}
-
-.leaf22 {
-    left: 95rem;
-}
-
-.leaf23 {
-    left: 48rem;
-}
-
-.leaf24 {
-    left: 78rem;
-}
-
-.leaf25 {
-    left: 53rem;
-}
-
-.leaf26 {
-    left: 88rem;
-}
-
-.leaf27 {
-    left: 74rem;
-}
-
-.leaf28 {
-    left: 59rem;
-}
-
-.leaf29 {
-    left: 56rem;
-}
-
-.leaf30 {
-    left: 63rem;
 }
 
 .image1,
@@ -168,8 +45,8 @@
     transform: rotate(13deg);
     position: absolute;
     z-index: -1;
-    top: 134rem;
-    right: 62rem;
+    top: 91rem;
+    right: 152rem;
 }
 
 .image6 {
