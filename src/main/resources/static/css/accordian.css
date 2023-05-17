@@ -19,3 +19,9 @@ th, td {
 .opened {
 	background-color: #f2f2f2;
 }
+
+.accordion-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
