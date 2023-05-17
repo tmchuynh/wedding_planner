@@ -14,7 +14,7 @@
 		<div class="d-flex justify-content-between">
 			<h1>Your Quote for ${venue != null ? venue.name : ''} on ${date }</h1>
 			<div class="d-flex justify-content-between">
-				<a class="btn btn-secondary m-3" href="/venues">Start Over</a>
+				<a class="btn btn-danger m-3" href="/venues">Start Over</a>
 			</div>
 		</div>
 
