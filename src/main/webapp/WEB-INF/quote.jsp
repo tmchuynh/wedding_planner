@@ -46,7 +46,7 @@
 		</div>
 
 		<div class="container-fluid">
-			<table class="table table-hover">
+			<table class="table">
 				<thead>
 					<tr>
 						<th>‎Name</th>
@@ -72,7 +72,7 @@
 							style="width: 200px; height: 200px; object-fit: cover;"
 							class="img-thumbnail my-3">
 							<h3>Details:</h3>
-							<table class="table table-hover">
+							<table class="table">
 								<thead>
 									<tr>
 										<th>Amenities</th>
