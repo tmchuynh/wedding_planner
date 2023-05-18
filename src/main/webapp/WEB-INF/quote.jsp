@@ -137,7 +137,7 @@
 							<tbody>
 								<tr>
 									<td>${catering.name}</td>
-									<td class="col-3 main" style="font-weight: bold;" class="staffPrice">$${catering.staff_price}</td>
+									<td class="col-3 main" style="font-weight: bold;" id="cateringPrice">$${catering.staff_price}</td>
 									<!-- Displays all the different food restrictions available for the catering company -->
 									<td class="col-3">
 										<c:set var="uniqueRestrictions" value="" />
@@ -279,9 +279,7 @@
 						var venue = parseFloat(document.querySelector('.venuePrice').innerHTML.slice(1));
 						var food = parseFloat(document.querySelector('.foodTotal').innerHTML.slice(1));
 						var room = parseFloat(document.querySelector('.roomTotal').innerHTML.slice(1));
-						var staff = parseFloat(document.querySelector('.staffPrice').innerHTML.slice(1));
-
-						console.log(ceremony, reception, bar, staff);
+						var staff = parseFloat(document.querySelector('#cateringPrice').innerHTML.slice(1));
 
 						var estimatedTotal = reception + ceremony + bar + venue + food + room + staff;
 
