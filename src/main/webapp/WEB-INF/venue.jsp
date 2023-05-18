@@ -20,7 +20,7 @@
 				<h1 class="danger">Wedding Planner</h1>
 				<h2 class="main">Venues</h2>
 
-				<table class="table table-hover">
+				<table class="table table-hover" >
 					<thead>
 						<tr class="danger">
 							<th>‎&#160;&#160;&#160;&#160;&#160;Name</th>

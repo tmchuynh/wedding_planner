@@ -15,7 +15,7 @@
 			</head>
 
 			<body>
-				<div class="container-fluid body-container p-4">
+				<div class="container-fluid body-container p-4" >
 					<img src="/images/extra/image3.png" alt="venue" class="image1">
 					<div class="d-flex justify-content-between">
 						<h1 class="danger">${venue != null ? venue.name : ''} Details</h1>
@@ -33,13 +33,13 @@
 					<h3 class="danger">${venue.name}</h3>
 					<p><span style="font-weight: bold;">City:</span> ${venue.city}</p>
 					<p><span style="font-weight: bold;">State:</span> ${venue.state}</p>
-					<p><span style="font-weight: bold;">Price:</span> <span class="main">$${venue.price }</span></p>
+					<p><span style="font-weight: bold;">Price:</span> <span class="main" style="font-weight: bold;">$${venue.price }</span></p>
 
 					<h3 class="danger">Selected Date: ${date}</h3>
 					<c:if test="${price != null}">
-						<p><span style="font-weight: bold;">Reception Price:</span> <span class="main">$${price.receptionStartingPrice}</span></p>
-						<p><span style="font-weight: bold;">Ceremony Price:</span> <span class="main">$${price.ceremonyStartingPrice}</span></p>
-						<p><span style="font-weight: bold;">Bar Price:</span> <span class="main">$${price.barStartingPrice}</span></p>
+						<p><span style="font-weight: bold;">Reception Price:</span> <span class="main" style="font-weight: bold;">$${price.receptionStartingPrice}</span></p>
+						<p><span style="font-weight: bold;">Ceremony Price:</span> <span class="main" style="font-weight: bold;">$${price.ceremonyStartingPrice}</span></p>
+						<p><span style="font-weight: bold;">Bar Price:</span> <span class="main" style="font-weight: bold;">$${price.barStartingPrice}</span></p>
 						<c:if test="${price.peakSeason}">
 							<p style="font-weight: bold;">
 								Off Peak Season (

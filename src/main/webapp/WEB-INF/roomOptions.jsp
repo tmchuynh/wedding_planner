@@ -50,7 +50,7 @@
 														<ul>
 															<li><span style="font-weight: bold;">Date:</span> ${availableRoom.date}</li>
 															<li><span style="font-weight: bold;">Rooms Available:</span> ${availableRoom.roomsAvailable}</li>
-															<li><span style="font-weight: bold;">Price per Night:</span> <span class="main">$${availableRoom.pricePerNight}</span></li>
+															<li><span style="font-weight: bold;">Price per Night:</span> <span class="main" style="font-weight: bold;">$${availableRoom.pricePerNight}</span></li>
 														</ul>
 													</c:forEach>
 												</c:if>

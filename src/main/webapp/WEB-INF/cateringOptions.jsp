@@ -33,7 +33,7 @@
 						<c:forEach items="${cateringOptions}" var="catering">
 							<tr class="accordion">
 								<td><span class="arrow">&#x25B6;</span> ${catering.name}</td>
-								<td class="col-3 main">$${catering.staff_price}</td>
+								<td class="col-3 main" style="font-weight: bold;">$${catering.staff_price}</td>
 								<!-- Displays all the different food restrictions available for the catering company -->
 								<td class="col-3">
 									<c:set var="uniqueRestrictions" value="" />
@@ -71,7 +71,7 @@
 															class="img-thumbnail"></td>
 													<td class="col-2">${food.name}</td>
 													<td class="col-8">${food.description}</td>
-													<td class="col-3 main">$${food.price}</td>
+													<td class="col-3 main" style="font-weight: bold;">$${food.price}</td>
 												</tr>
 											</c:forEach>
 										</tbody>

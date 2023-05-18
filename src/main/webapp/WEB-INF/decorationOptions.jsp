@@ -38,7 +38,7 @@
 										<p class="card-text"><span style="font-weight: bold;">Dimensions:</span> ${decoration.width}W x
 											${decoration.height}H x ${decoration.depth}D</p>
 										<p class="card-text" ><span style="font-weight: bold;">Fragile:</span> <span style="text-transform: uppercase;">${decoration.fragile}</span></p>
-										<p class="card-text"><span style="font-weight: bold;">Fee:</span> <span class="main">$${decoration.fee}</span></p>
+										<p class="card-text"><span style="font-weight: bold;">Fee:</span> <span class="main" style="font-weight: bold;">$${decoration.fee}</span></p>
 										<p class="card-text"><span style="font-weight: bold;">Quantity:</span> ${decoration.quantity}</p>
 									</div>
 								</div>

@@ -79,8 +79,8 @@
 									<td class="col-2">${venue.name}${venue.id }</td>
 									<td class="col-1">${venue.city}</td>
 									<td class="col-1">${venue.state}</td>
-									<td class="col-1 venuePrice main">$${venue.price }</td>
-									<td class="col-1 text-center main">${venue.rating}</td>
+									<td class="col-1 venuePrice main" style="font-weight: bold;">$${venue.price }</td>
+									<td class="col-1 text-center">${venue.rating}</td>
 								</tr>
 
 								<tr>
@@ -137,7 +137,7 @@
 							<tbody>
 								<tr>
 									<td>${catering.name}</td>
-									<td class="col-3 main">$${catering.staff_price}</td>
+									<td class="col-3 main" style="font-weight: bold;">$${catering.staff_price}</td>
 									<!-- Displays all the different food restrictions available for the catering company -->
 									<td class="col-3">
 										<c:set var="uniqueRestrictions" value="" />
@@ -152,7 +152,7 @@
 											</c:forEach>
 										</c:forEach>
 									</td>
-									<th class="foodTotal">$0.00</th>
+									<th class="foodTotal main" style="font-weight: bold;">$0.00</th>
 								</tr>
 								<tr>
 									<td colspan="7"><img src="/images/catering/${catering.image }"
@@ -177,7 +177,7 @@
 																class="img-thumbnail"></td>
 														<td>${food.name}</td>
 														<td>${food.description}</td>
-														<td class="main">$${food.price}</td>
+														<td class="main" style="font-weight: bold;">$${food.price}</td>
 														<td><input type="number" class="col-xs-2 form-control"
 																style="width: 4rem;" value="0"
 																onchange="updateTotalPrice(this)"
@@ -196,7 +196,7 @@
 					<div class="container-fluid p-4">
 						<div class="d-flex justify-content-between">
 							<h1>Room Options</h1>
-							<h5 class="roomTotal mt-auto">$0.00</h5>
+							<h5 class="roomTotal mt-auto main" style="font-weight: bold;">$0.00</h5>
 						</div>
 						<hr>
 						<c:if test="${not empty roomOptions}">
@@ -225,7 +225,7 @@
 																			class="roomsAvailable">${availableRoom.roomsAvailable}</span>
 																	</li>
 																	<li><span style="font-weight: bold;">Price per Night:</span> <span
-																			class="pricePerNight main">$${availableRoom.pricePerNight}</span>
+																			class="pricePerNight main" style="font-weight: bold;">$${availableRoom.pricePerNight}</span>
 																	</li>
 																</ul>
 															</c:forEach>
@@ -270,36 +270,6 @@
 				<script>
 					document.addEventListener('DOMContentLoaded', function () {
 						calculateEstimatedTotal()
-					});
-
-					$(function () {
-						var body = $('#starshine'),
-							template = $('.template.shine'),
-							stars = 500,
-							sparkle = 20;
-
-
-						var size = 'small';
-						var createStar = function () {
-							template.clone().removeAttr('id').css({
-								top: (Math.random() * 100) + '%',
-								left: (Math.random() * 100) + '%',
-								webkitAnimationDelay: (Math.random() * sparkle) + 's',
-								mozAnimationDelay: (Math.random() * sparkle) + 's'
-							}).addClass(size).appendTo(body);
-						};
-
-						for (var i = 0; i < stars; i++) {
-							if (i % 2 === 0) {
-								size = 'small';
-							} else if (i % 3 === 0) {
-								size = 'medium';
-							} else {
-								size = 'large';
-							}
-
-							createStar();
-						}
 					});
 
 					function calculateEstimatedTotal() {
