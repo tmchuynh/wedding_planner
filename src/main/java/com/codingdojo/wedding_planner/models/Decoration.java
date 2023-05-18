@@ -9,37 +9,37 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="decorations")
+@Table(name = "decorations")
 public class Decoration {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private String type;
-	
+
 	private double width;
-	
+
 	private double height;
-	
+
 	private double depth;
-	
+
 	private String image;
-	
+
 	private Boolean fragile;
-	
+
 	private double fee;
-	
+
 	private int quantity;
-	
+
 	// Many-to-One relationship with Venue
 	@ManyToOne
 	@JoinColumn(name = "venue_id")
 	private Venue venue;
-	
+
 	public Decoration() {
-		
+
 	}
 
 	public Long getId() {
@@ -129,5 +129,5 @@ public class Decoration {
 	public void setVenue(Venue venue) {
 		this.venue = venue;
 	}
-	
+
 }

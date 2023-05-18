@@ -18,18 +18,25 @@ import com.codingdojo.wedding_planner.repositories.VenueRepository;
 public class CateringController {
 	@Autowired
 	private VenueRepository venueRepository;
-	
-	// Displays the catering companies available for the venue selected
+
+	/**
+	 * Returns the catering options for a given venue.
+	 * 
+	 *
+	 * @param venueId The ID of the venue to get catering options for
+	 * @param model   The model to add the catering options and venue to
+	 * @return A string representing the name of the view to display catering
+	 *         options
+	 */
 	@GetMapping("/{id}")
 	public String getAll(@PathVariable("id") Long venueId, Model model) {
-	    Venue venue = venueRepository.findById(venueId).orElse(null);
-	    if (venue != null) {
-	        List<Catering> cateringOptions = venue.getCatering();
-	        model.addAttribute("cateringOptions", cateringOptions);
-	        model.addAttribute("venue", venue);
-	    }
-	    return "cateringOptions";
+		Venue venue = venueRepository.findById(venueId).orElse(null);
+		if (venue != null) {
+			List<Catering> cateringOptions = venue.getCatering();
+			model.addAttribute("cateringOptions", cateringOptions);
+			model.addAttribute("venue", venue);
+		}
+		return "cateringOptions";
 	}
-
 
 }

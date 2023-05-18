@@ -22,33 +22,41 @@ import jakarta.servlet.http.HttpSession;
 public class SessionController {
 	@Autowired
 	private GuestRoomRepository roomRepository;
-	
+
 	@Autowired
 	private CateringRepository cateringRepository;
-	
+
 	@Autowired
 	private VenueRepository venueRepository;
-	
-	
+
+	/**
+	 * Retrieves a quote for a venue by its ID and populates the model with relevant
+	 * data
+	 *
+	 * @param venueId the ID of the venue to retrieve a quote for
+	 * @param model   the model to populate with data
+	 * @param session the HttpSession object to use to retrieve session data
+	 * @return a string representing the name of the view to render
+	 */
 	@GetMapping("/{id}")
 	public String getQuote(@PathVariable("id") Long venueId, Model model, HttpSession session) {
 		Venue venue = venueRepository.findById(venueId).orElse(null);
-		
+
 		if (venue != null) {
 			model.addAttribute("venue", session.getAttribute("venue"));
-			
+
 			model.addAttribute("selectedDate", session.getAttribute("date"));
-			
+
 			model.addAttribute("monthlyPrice", session.getAttribute("price"));
-			
+
 			List<Catering> cateringOptions = venue.getCatering();
 			for (Catering cater : cateringOptions) {
 				if (cater.getId() == session.getAttribute("catering")) {
-					
+
 					session.setAttribute("catering", cater);
 				}
 			}
-			
+
 			return "quote";
 		}
 		return "redirect:/venues";

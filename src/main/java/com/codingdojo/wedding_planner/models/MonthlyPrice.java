@@ -32,7 +32,7 @@ public class MonthlyPrice {
 
 	@Column(name = "is_peak_season")
 	private Boolean peakSeason;
-	
+
 	// Many-to-One relationship with Venue
 	@ManyToOne
 	@JoinColumn(name = "venue_id")

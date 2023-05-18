@@ -22,5 +22,4 @@ public class GuestRoomService {
         return guestRoomRepo.findById(id)
                 .orElseThrow(() -> new NotFoundException());
     }
-    
 }

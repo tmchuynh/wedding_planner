@@ -34,7 +34,6 @@ public class FoodService {
         food.setDescription(foodDetails.getDescription());
         food.setPrice(foodDetails.getPrice());
         food.setRestrictions(foodDetails.getRestrictions());
-//        food.setVenue(foodDetails.getVenue());
         return foodRepository.save(food);
     }
 
@@ -43,4 +42,3 @@ public class FoodService {
         foodRepository.delete(food);
     }
 }
-

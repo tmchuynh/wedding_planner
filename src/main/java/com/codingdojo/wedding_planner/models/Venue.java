@@ -32,11 +32,11 @@ public class Venue {
 	private String state;
 
 	private int capacity;
-	
+
 	private String image;
 
 	private Double rating;
-	
+
 	private Double price;
 
 	@ElementCollection
@@ -70,7 +70,7 @@ public class Venue {
 	// One-to-Many relationship with GuestRoom
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
 	private List<GuestRoom> guestRooms;
-	
+
 	// One-to-Many relationship with Catering
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venue")
 	private List<Catering> catering;
@@ -207,16 +207,17 @@ public class Venue {
 		this.price = price;
 	}
 
-	public MonthlyPrice getMonthlyPriceForDate(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-	    String selectedMonth = date.getMonth().name();
-	    
-	    for (MonthlyPrice monthlyPrice : monthlyPrices) {
-	        if (monthlyPrice.getMonth().equalsIgnoreCase(selectedMonth)) {
-	            return monthlyPrice;
-	        }
-	    }
-	    
-	    return null;
+	public MonthlyPrice getMonthlyPriceForDate(
+			@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+		String selectedMonth = date.getMonth().name();
+
+		for (MonthlyPrice monthlyPrice : monthlyPrices) {
+			if (monthlyPrice.getMonth().equalsIgnoreCase(selectedMonth)) {
+				return monthlyPrice;
+			}
+		}
+
+		return null;
 	}
 
 }

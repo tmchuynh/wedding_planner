@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.codingdojo.wedding_planner.models.GuestRoom;
 
-public interface GuestRoomRepository extends JpaRepository<GuestRoom, Long>{
+public interface GuestRoomRepository extends JpaRepository<GuestRoom, Long> {
 	List<GuestRoom> findAll();
+
 	Optional<GuestRoom> findById(Long id);
 }

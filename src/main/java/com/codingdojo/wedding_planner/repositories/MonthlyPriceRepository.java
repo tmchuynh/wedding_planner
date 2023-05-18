@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.codingdojo.wedding_planner.models.MonthlyPrice;
 
-public interface MonthlyPriceRepository extends JpaRepository<MonthlyPrice, Long>{
+public interface MonthlyPriceRepository extends JpaRepository<MonthlyPrice, Long> {
 	List<MonthlyPrice> findAll();
+
 	Optional<MonthlyPrice> findById(Long id);
 }

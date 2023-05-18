@@ -16,34 +16,34 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="caterings")
+@Table(name = "caterings")
 public class Catering {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private Double staff_price;
-	
+
 	@ElementCollection
 	@CollectionTable(name = "catering_staff", joinColumns = @JoinColumn(name = "catering_id"))
 	@Column(name = "staff")
 	private List<String> staff;
-	
+
 	private String image;
-	
+
 	// One-to-Many relationship with Food
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "catering")
 	private List<Food> availableFoods;
-	
+
 	// Many-to-One relationship with Venue
 	@ManyToOne
 	@JoinColumn(name = "venue_id")
 	private Venue venue;
-	
+
 	public Catering() {
-		
+
 	}
 
 	public Long getId() {

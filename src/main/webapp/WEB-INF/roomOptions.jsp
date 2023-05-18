@@ -37,7 +37,8 @@
 										<img src="/images/rooms/${room.image}" alt="${room.name}" class="card-img-top"
 											style="height: 15rem; object-fit: cover;">
 										<div class="card-body">
-											<h5 class="card-title main" style="text-transform: uppercase;">${room.type}</h5>
+											<h5 class="card-title main" style="text-transform: uppercase;">${room.type}
+											</h5>
 											<div class="room-details">
 												<p>Capacity: ${room.capacity}</p>
 												<p>Available on:</p>

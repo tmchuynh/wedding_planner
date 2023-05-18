@@ -18,30 +18,30 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "guest_rooms")
 public class GuestRoom {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String type;
+	private String name;
 
-    private int capacity;
-    
-    private String image;
+	private String type;
 
-    // One-to-Many relationship with RoomAvailability
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<RoomAvailability> availabilities = new HashSet<>();
+	private int capacity;
 
-    // Many-to-One relationship with Venue
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "venue_id")
-    private Venue venue;
+	private String image;
 
-    public GuestRoom() {
-    	
-    }
+	// One-to-Many relationship with RoomAvailability
+	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<RoomAvailability> availabilities = new HashSet<>();
+
+	// Many-to-One relationship with Venue
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "venue_id")
+	private Venue venue;
+
+	public GuestRoom() {
+
+	}
 
 	public Long getId() {
 		return id;
@@ -100,30 +100,29 @@ public class GuestRoom {
 	}
 
 	public boolean isAvailableOnDate(LocalDate selectedDateValue) {
-	    for (RoomAvailability availability : availabilities) {
-	        if (availability.getDate().equals(selectedDateValue) && availability.getRoomsAvailable() > 0) {
-	            return true;
-	        }
-	    }
-	    return false;
+		for (RoomAvailability availability : availabilities) {
+			if (availability.getDate().equals(selectedDateValue) && availability.getRoomsAvailable() > 0) {
+				return true;
+			}
+		}
+		return false;
 	}
-	
+
 	public Set<RoomAvailability> getAvailableRoomsOnDate(LocalDate selectedDate) {
-	    Set<RoomAvailability> availableRooms = new HashSet<>();
+		Set<RoomAvailability> availableRooms = new HashSet<>();
 
-	    for (RoomAvailability availability : availabilities) {
-	        if (availability.getDate().equals(selectedDate) && availability.getRoomsAvailable() > 0) {
-	            availableRooms.add(availability);
+		for (RoomAvailability availability : availabilities) {
+			if (availability.getDate().equals(selectedDate) && availability.getRoomsAvailable() > 0) {
+				availableRooms.add(availability);
 
-	            // Break the loop when 6 rooms have been added
-	            if (availableRooms.size() == 6) {
-	                break;
-	            }
-	        }
-	    }
+				// Break the loop when 6 rooms have been added
+				if (availableRooms.size() == 6) {
+					break;
+				}
+			}
+		}
 
-	    return availableRooms;
+		return availableRooms;
 	}
-
 
 }

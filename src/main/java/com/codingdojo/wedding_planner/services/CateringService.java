@@ -13,11 +13,11 @@ import com.codingdojo.wedding_planner.repositories.CateringRepository;
 public class CateringService {
 	@Autowired
 	private CateringRepository cateringRepository;
-	
+
 	public List<Catering> getAllCatering() {
 		return cateringRepository.findAll();
 	}
-	
+
 	public Catering getCateringById(Long id) throws NotFoundException {
 		return cateringRepository.findById(id).orElseThrow(() -> new NotFoundException());
 	}

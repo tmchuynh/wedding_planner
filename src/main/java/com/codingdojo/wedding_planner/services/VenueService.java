@@ -32,7 +32,4 @@ public class VenueService {
         Optional<Venue> venueOptional = getVenueById(id);
         venueOptional.ifPresent(venue -> venueRepository.delete(venue));
     }
-
-
 }
-

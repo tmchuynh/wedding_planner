@@ -25,8 +25,14 @@ public class VenueController {
 
 	@Autowired
 	private VenueRepository venueRepository;
-	
-	// Lists all the venues with their details (restrictions, amenities, etc.)
+
+	/**
+	 * Retrieves all venues and adds them to the model for display.
+	 *
+	 * @param model       the model to add the venueList attribute to
+	 * @param restriction (optional) a string to restrict the results by
+	 * @return the view name for the venue template
+	 */
 	@GetMapping("")
 	public String getAll(Model model,
 			@RequestParam(name = "restriction", required = false) String restriction) {
@@ -36,36 +42,42 @@ public class VenueController {
 
 		return "venue";
 	}
-	
-	// Venue details with date picker
+
+	/**
+	 * Retrieves details for a venue with the given ID and displays them on a page.
+	 *
+	 * @param model   the Spring model used for rendering the view
+	 * @param date    an optional date parameter in the format "yyyy-MM-dd" for
+	 *                selecting a specific month
+	 * @param venueId the ID of the venue to retrieve details for
+	 * @param session the HTTP session object used for storing venue, date, and
+	 *                price attributes
+	 * @return the name of the view template to render the page
+	 */
 	@GetMapping("/{id}")
 	public String getVenueDetails(
-	    Model model,
-	    @RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Optional<LocalDate> date,
-	    @PathVariable("id") Long venueId, HttpSession session
-	) {
-	    LocalDate selectedDate = date.orElse(LocalDate.now());
-	    
-	    Venue venue = venueRepository.findById(venueId).orElse(null);
-	    MonthlyPrice price = venue.getMonthlyPriceForDate(selectedDate);
-	    if (venue != null) {
-	        model.addAttribute("venue", venue);
-	        model.addAttribute("date", selectedDate);
-	        model.addAttribute("price", price);
-	        session.setAttribute("venue", venue);
-	        session.setAttribute("date", selectedDate);
-	        session.setAttribute("price", price);
-	    }
-	    
-	    if (session.getAttribute("venue") != null) {
-	        session.setAttribute("venue", venue);
-	        session.setAttribute("date", selectedDate);
-	        session.setAttribute("price", price);
-	    }
-	    return "venueDetails";
+			Model model,
+			@RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Optional<LocalDate> date,
+			@PathVariable("id") Long venueId, HttpSession session) {
+		LocalDate selectedDate = date.orElse(LocalDate.now());
+
+		Venue venue = venueRepository.findById(venueId).orElse(null);
+		MonthlyPrice price = venue.getMonthlyPriceForDate(selectedDate);
+		if (venue != null) {
+			model.addAttribute("venue", venue);
+			model.addAttribute("date", selectedDate);
+			model.addAttribute("price", price);
+			session.setAttribute("venue", venue);
+			session.setAttribute("date", selectedDate);
+			session.setAttribute("price", price);
+		}
+
+		if (session.getAttribute("venue") != null) {
+			session.setAttribute("venue", venue);
+			session.setAttribute("date", selectedDate);
+			session.setAttribute("price", price);
+		}
+		return "venueDetails";
 	}
-
-
-
 
 }

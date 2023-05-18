@@ -13,13 +13,13 @@ import com.codingdojo.wedding_planner.repositories.DecorationRepository;
 public class DecorationService {
 	@Autowired
 	private DecorationRepository decorRepository;
-	
+
 	public List<Decoration> getAllDecor() {
 		return decorRepository.findAll();
 	}
-	
+
 	public Decoration getDecorById(Long id) throws NotFoundException {
-        return decorRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException());
-    }
+		return decorRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException());
+	}
 }

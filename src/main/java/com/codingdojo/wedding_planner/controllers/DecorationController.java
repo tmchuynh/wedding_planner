@@ -20,10 +20,19 @@ import jakarta.servlet.http.HttpSession;
 public class DecorationController {
 	@Autowired
 	private VenueRepository venueRepository;
-	
-	// Displays decorations available for the selected venue
+
+	/**
+	 * Retrieves a list of decoration options for a given venue and catering ID.
+	 *
+	 * @param venueId    the ID of the venue to retrieve decoration options for
+	 * @param cateringId the ID of the catering option chosen
+	 * @param model      the model used to add attributes to the view
+	 * @param session    the HTTP session
+	 * @return the name of the view to display decoration options
+	 */
 	@GetMapping("/{venueId}/{cateringId}")
-	public String getAll(@PathVariable("venueId") Long venueId,@PathVariable("cateringId") Long cateringId ,Model model, HttpSession session) {
+	public String getAll(@PathVariable("venueId") Long venueId, @PathVariable("cateringId") Long cateringId,
+			Model model, HttpSession session) {
 		Venue venue = venueRepository.findById(venueId).orElse(null);
 		session.setAttribute("catering", cateringId);
 		if (venue != null) {

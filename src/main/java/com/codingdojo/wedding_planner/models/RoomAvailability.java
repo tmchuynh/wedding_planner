@@ -15,30 +15,30 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "room_availabilities")
 public class RoomAvailability {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private LocalDate date;
+	private LocalDate date;
 
-    private int roomsAvailable;
+	private int roomsAvailable;
 
-    private BigDecimal pricePerNight;
+	private BigDecimal pricePerNight;
 
-    // Many-to-One relationship with GuestRoom
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "room_id")
-    private GuestRoom room;
-    
-    public RoomAvailability() {
-    	
-    }
+	// Many-to-One relationship with GuestRoom
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "room_id")
+	private GuestRoom room;
 
-    public RoomAvailability(LocalDate date, int roomsAvailable, BigDecimal pricePerNight) {
-        this.date = date;
-        this.roomsAvailable = roomsAvailable;
-        this.pricePerNight = pricePerNight;
-    }
+	public RoomAvailability() {
+
+	}
+
+	public RoomAvailability(LocalDate date, int roomsAvailable, BigDecimal pricePerNight) {
+		this.date = date;
+		this.roomsAvailable = roomsAvailable;
+		this.pricePerNight = pricePerNight;
+	}
 
 	public Long getId() {
 		return id;
@@ -80,7 +80,7 @@ public class RoomAvailability {
 		this.room = room;
 	}
 
-    public boolean isAvailableOnDate(LocalDate selectedDate) {
-        return date.equals(selectedDate);
-    }
+	public boolean isAvailableOnDate(LocalDate selectedDate) {
+		return date.equals(selectedDate);
+	}
 }
