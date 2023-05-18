@@ -25,11 +25,11 @@
 
 					<div class="container-fluid">
 						<h1>
-							Estimated Total: $<span class="estimatedTotal">0.00</span>
+							Estimated Total: <span class="estimatedTotal danger">$0.00</span>
 							<br>
-							Estimated Food Cost: $<span class="estimatedFood">0.00</span>
+							Estimated Food Cost: <span class="estimatedFood danger">$0.00</span>
 							<br>
-							Estimated Hotel Cost: $<span class="estimatedHotel">0.00</span>
+							Estimated Hotel Cost: <span class="estimatedHotel danger">$0.00</span>
 						</h1>
 						<c:if test="${price != null}">
 							<p>
@@ -303,18 +303,18 @@
 					});
 
 					function calculateEstimatedTotal() {
-						var reception = parseFloat(document.querySelector('.receptionPrice').innerHTML);
-						var ceremony = parseFloat(document.querySelector('.ceremonyPrice').innerHTML);
-						var bar = parseFloat(document.querySelector('.barPrice').innerHTML);
+						var reception = parseFloat(document.querySelector('.receptionPrice').innerHTML.slice(1));
+						var ceremony = parseFloat(document.querySelector('.ceremonyPrice').innerHTML.slice(1));
+						var bar = parseFloat(document.querySelector('.barPrice').innerHTML.slice(1));
 						var venue = parseFloat(document.querySelector('.venuePrice').innerHTML.slice(1));
 						var food = parseFloat(document.querySelector('.foodTotal').innerHTML.slice(1));
 						var room = parseFloat(document.querySelector('.roomTotal').innerHTML.slice(1));
 
 						var estimatedTotal = reception + ceremony + bar + venue + food + room;
 
-						document.querySelector('.estimatedTotal').innerHTML = estimatedTotal.toFixed(2);
-						document.querySelector('.estimatedFood').innerHTML = food;
-						document.querySelector('.estimatedHotel').innerHTML = room;
+						document.querySelector('.estimatedTotal').innerHTML = "$" + estimatedTotal.toFixed(2);
+						document.querySelector('.estimatedFood').innerHTML = "$" + food;
+						document.querySelector('.estimatedHotel').innerHTML = "$" + room;
 					}
 
 					// Updates the total price of a food item based on its quantity.
