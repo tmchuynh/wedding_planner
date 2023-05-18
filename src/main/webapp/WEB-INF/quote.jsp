@@ -137,7 +137,7 @@
 							<tbody>
 								<tr>
 									<td>${catering.name}</td>
-									<td class="col-3 main" style="font-weight: bold;">$${catering.staff_price}</td>
+									<td class="col-3 main" style="font-weight: bold;" class="staffPrice">$${catering.staff_price}</td>
 									<!-- Displays all the different food restrictions available for the catering company -->
 									<td class="col-3">
 										<c:set var="uniqueRestrictions" value="" />
@@ -273,14 +273,17 @@
 					});
 
 					function calculateEstimatedTotal() {
-						var reception = parseFloat(document.querySelector('.receptionPrice').innerHTML.slice(1));
-						var ceremony = parseFloat(document.querySelector('.ceremonyPrice').innerHTML.slice(1));
-						var bar = parseFloat(document.querySelector('.barPrice').innerHTML.slice(1));
+						var reception = parseFloat(document.querySelector('.receptionPrice').innerHTML);
+						var ceremony = parseFloat(document.querySelector('.ceremonyPrice').innerHTML);
+						var bar = parseFloat(document.querySelector('.barPrice').innerHTML);
 						var venue = parseFloat(document.querySelector('.venuePrice').innerHTML.slice(1));
 						var food = parseFloat(document.querySelector('.foodTotal').innerHTML.slice(1));
 						var room = parseFloat(document.querySelector('.roomTotal').innerHTML.slice(1));
+						var staff = parseFloat(document.querySelector('.staffPrice').innerHTML.slice(1));
 
-						var estimatedTotal = reception + ceremony + bar + venue + food + room;
+						console.log(ceremony, reception, bar, staff);
+
+						var estimatedTotal = reception + ceremony + bar + venue + food + room + staff;
 
 						document.querySelector('.estimatedTotal').innerHTML = "$" + estimatedTotal.toFixed(2);
 						document.querySelector('.estimatedFood').innerHTML = "$" + food;
