@@ -18,7 +18,7 @@
 		<body>
 			<div class="container-fluid body-container p-4">
 				<h1 class="danger">Wedding Planner</h1>
-				<h2>Venues</h2>
+				<h2 class="main">Venues</h2>
 
 				<table class="table table-hover">
 					<thead>
@@ -46,7 +46,7 @@
 							<tr class="accordion-content">
 								<td colspan="7"><img src="/images/venues/${venue.image }" alt="${venue.name }"
 										style="width: 200px; height: 200px; object-fit: cover;" class="mb-4 img-thumbnail">
-									<h3 class="accordion-header">&#160;Details:</h3>
+									<h3 class="accordion-header main">&#160;Details:</h3>
 									<table class="table table-hover">
 										<thead>
 											<tr class="danger">

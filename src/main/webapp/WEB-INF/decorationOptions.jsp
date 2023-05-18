@@ -34,12 +34,12 @@
 										class="card-img-top" style="height: 15rem; object-fit: cover;">
 									<div class="card-body">
 										<h3 class="danger card-title">${decoration.name}</h3>
-										<p class="card-text">Type: ${decoration.type}</p>
-										<p class="card-text">Dimensions: ${decoration.width}W x
+										<p class="card-text"><span style="font-weight: bold;">Type:</span> ${decoration.type}</p>
+										<p class="card-text"><span style="font-weight: bold;">Dimensions:</span> ${decoration.width}W x
 											${decoration.height}H x ${decoration.depth}D</p>
-										<p class="card-text" >Fragile: <span style="text-transform: uppercase;">${decoration.fragile}</span></p>
-										<p class="card-text">Fee: <span class="main">$${decoration.fee}</span></p>
-										<p class="card-text">Quantity: ${decoration.quantity}</p>
+										<p class="card-text" ><span style="font-weight: bold;">Fragile:</span> <span style="text-transform: uppercase;">${decoration.fragile}</span></p>
+										<p class="card-text"><span style="font-weight: bold;">Fee:</span> <span class="main">$${decoration.fee}</span></p>
+										<p class="card-text"><span style="font-weight: bold;">Quantity:</span> ${decoration.quantity}</p>
 									</div>
 								</div>
 							</div>

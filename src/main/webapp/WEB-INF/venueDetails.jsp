@@ -31,17 +31,17 @@
 					</form>
 					<hr>
 					<h3 class="danger">${venue.name}</h3>
-					<p>City: ${venue.city}</p>
-					<p>State: ${venue.state}</p>
-					<p>Price: <span class="main">$${venue.price }</span></p>
+					<p><span style="font-weight: bold;">City:</span> ${venue.city}</p>
+					<p><span style="font-weight: bold;">State:</span> ${venue.state}</p>
+					<p><span style="font-weight: bold;">Price:</span> <span class="main">$${venue.price }</span></p>
 
 					<h3 class="danger">Selected Date: ${date}</h3>
 					<c:if test="${price != null}">
-						<p>Reception Price: <span class="main">$${price.receptionStartingPrice}</span></p>
-						<p>Ceremony Price: <span class="main">$${price.ceremonyStartingPrice}</span></p>
-						<p>Bar Price: <span class="main">$${price.barStartingPrice}</span></p>
+						<p><span style="font-weight: bold;">Reception Price:</span> <span class="main">$${price.receptionStartingPrice}</span></p>
+						<p><span style="font-weight: bold;">Ceremony Price:</span> <span class="main">$${price.ceremonyStartingPrice}</span></p>
+						<p><span style="font-weight: bold;">Bar Price:</span> <span class="main">$${price.barStartingPrice}</span></p>
 						<c:if test="${price.peakSeason}">
-							<p>
+							<p style="font-weight: bold;">
 								Off Peak Season (
 								<c:forEach items="${venue.offPeakSeason}" var="offPeakSeason">
 									<span>${fn:substring(offPeakSeason, 0, 3)}</span>

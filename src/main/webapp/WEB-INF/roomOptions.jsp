@@ -40,17 +40,17 @@
 											<h5 class="card-title danger" style="text-transform: uppercase;">${room.type}
 											</h5>
 											<div class="room-details">
-												<p>Capacity: ${room.capacity}</p>
-												<p>Available on:</p>
+												<p><span style="font-weight: bold;">Capacity:</span> ${room.capacity}</p>
+												<p style="text-transform: uppercase;">Available on:</p>
 												<input type="hidden" name="id" class="roomId" value="${room.id}">
 												<c:set var="availableRooms"
 													value="${room.getAvailableRoomsOnDate(selectedDate)}" />
 												<c:if test="${not empty availableRooms}">
 													<c:forEach items="${availableRooms}" var="availableRoom">
 														<ul>
-															<li>Date: ${availableRoom.date}</li>
-															<li>Rooms Available: ${availableRoom.roomsAvailable}</li>
-															<li>Price per Night: <span class="main">$${availableRoom.pricePerNight}</span></li>
+															<li><span style="font-weight: bold;">Date:</span> ${availableRoom.date}</li>
+															<li><span style="font-weight: bold;">Rooms Available:</span> ${availableRoom.roomsAvailable}</li>
+															<li><span style="font-weight: bold;">Price per Night:</span> <span class="main">$${availableRoom.pricePerNight}</span></li>
 														</ul>
 													</c:forEach>
 												</c:if>

@@ -33,13 +33,13 @@
 						</h1>
 						<c:if test="${price != null}">
 							<p>
-								Reception Price: $<span class="receptionPrice">${price.receptionStartingPrice}</span>
+								<span style="font-weight: bold;">Reception Price:</span> $<span class="receptionPrice">${price.receptionStartingPrice}</span>
 							</p>
 							<p>
-								Ceremony Price: $<span class="ceremonyPrice">${price.ceremonyStartingPrice}</span>
+								<span style="font-weight: bold;">Ceremony Price:</span> $<span class="ceremonyPrice">${price.ceremonyStartingPrice}</span>
 							</p>
 							<p>
-								Bar Price: $<span class="barPrice">${price.barStartingPrice}</span>
+								<span style="font-weight: bold;">Bar Price:</span> $<span class="barPrice">${price.barStartingPrice}</span>
 							</p>
 							<c:if test="${price.peakSeason}">
 								<p>
@@ -211,8 +211,8 @@
 													<h5 class="card-title danger" style="text-transform: uppercase;">
 														${room.type}</h5>
 													<div class="room-details">
-														<p>Capacity: ${room.capacity}</p>
-														<p>Available on:</p>
+														<p><span style="font-weight: bold;">Capacity:</span> ${room.capacity}</p>
+														<p style="text-transform: uppercase;">Available on:</p>
 														<input type="hidden" name="id" class="roomId"
 															value="${room.id}">
 														<c:set var="availableRooms"
@@ -220,18 +220,18 @@
 														<c:if test="${not empty availableRooms}">
 															<c:forEach items="${availableRooms}" var="availableRoom">
 																<ul>
-																	<li>Date: ${availableRoom.date}</li>
-																	<li>Rooms Available: <span
+																	<li><span style="font-weight: bold;">Date:</span> ${availableRoom.date}</li>
+																	<li><span style="font-weight: bold;">Rooms Available:</span> <span
 																			class="roomsAvailable">${availableRoom.roomsAvailable}</span>
 																	</li>
-																	<li>Price per Night: <span
+																	<li><span style="font-weight: bold;">Price per Night:</span> <span
 																			class="pricePerNight main">$${availableRoom.pricePerNight}</span>
 																	</li>
 																</ul>
 															</c:forEach>
 															<div class="d-flex justify-content-center">
 																<div class="d-flex justify-content-between">
-																	<label class="danger mx-5 my-auto">Nights:</label>
+																	<label class="danger mx-5 my-auto" style="font-weight: bold;">Nights:</label>
 
 																	<input type="number" class="col-xs-2 form-control"
 																		style="width: 4rem;" value="0"
@@ -239,7 +239,7 @@
 																		data-previous-value="0">
 																</div>
 																<div class="d-flex justify-content-between">
-																	<label class="danger mx-5 my-auto">Rooms:</label>
+																	<label class="danger mx-5 my-auto" style="font-weight: bold;">Rooms:</label>
 
 																	<input type="number" class="col-xs-2 form-control"
 																		style="width: 4rem;" value="0"
