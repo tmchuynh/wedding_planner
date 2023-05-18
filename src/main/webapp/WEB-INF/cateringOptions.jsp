@@ -25,7 +25,7 @@
 				<table class="table">
 					<thead>
 						<tr class="main">
-							<th>Catering Name</th>
+							<th>&#160;&#160;&#160;&#160;&#160;Catering Name</th>
 							<th>Staff Price</th>
 							<th>Available Foods</th>
 							<th></th>
