@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.codingdojo.wedding_planner.models.Catering;
 import com.codingdojo.wedding_planner.models.Venue;
-import com.codingdojo.wedding_planner.repositories.CateringRepository;
-import com.codingdojo.wedding_planner.repositories.GuestRoomRepository;
 import com.codingdojo.wedding_planner.repositories.VenueRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -20,12 +18,6 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/quote")
 public class SessionController {
-	@Autowired
-	private GuestRoomRepository roomRepository;
-
-	@Autowired
-	private CateringRepository cateringRepository;
-
 	@Autowired
 	private VenueRepository venueRepository;
 
