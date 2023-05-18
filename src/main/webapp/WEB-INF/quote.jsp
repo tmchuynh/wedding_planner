@@ -17,7 +17,7 @@
 					<img src="/images/extra/logo.png" alt="venue" class="logo">
 					<img src="/images/extra/image4.png" alt="venue" class="image7">
 					<div class="d-flex justify-content-between">
-						<h1 class="main">Your Quote for ${venue != null ? venue.name : ''} on ${date }</h1>
+						<h1 class="danger">Your Quote for ${venue != null ? venue.name : ''} on ${date }</h1>
 						<div class="d-flex justify-content-between">
 							<a class="btn btn-danger m-3" href="/venues">Start Over</a>
 						</div>
@@ -25,11 +25,11 @@
 
 					<div class="container-fluid">
 						<h1>
-							Estimated Total: <span class="estimatedTotal danger">$0.00</span>
+							Estimated Total: <span class="estimatedTotal main">$0.00</span>
 							<br>
-							Estimated Food Cost: <span class="estimatedFood danger">$0.00</span>
+							Estimated Food Cost: <span class="estimatedFood main">$0.00</span>
 							<br>
-							Estimated Hotel Cost: <span class="estimatedHotel danger">$0.00</span>
+							Estimated Hotel Cost: <span class="estimatedHotel main">$0.00</span>
 						</h1>
 						<c:if test="${price != null}">
 							<p>
@@ -66,7 +66,7 @@
 					<div class="container-fluid">
 						<table class="table">
 							<thead>
-								<tr class="main">
+								<tr class="danger">
 									<th class="col-2">‎Name</th>
 									<th class="col-1">City</th>
 									<th class="col-1">State</th>
@@ -79,8 +79,8 @@
 									<td class="col-2">${venue.name}${venue.id }</td>
 									<td class="col-1">${venue.city}</td>
 									<td class="col-1">${venue.state}</td>
-									<td class="col-1 venuePrice">$${venue.price }</td>
-									<td class="col-1 text-center">${venue.rating}</td>
+									<td class="col-1 venuePrice main">$${venue.price }</td>
+									<td class="col-1 text-center main">${venue.rating}</td>
 								</tr>
 
 								<tr>
@@ -90,7 +90,7 @@
 										<h3>Details:</h3>
 										<table class="table">
 											<thead>
-												<tr class="main">
+												<tr class="danger">
 													<th class="col-4">Amenities</th>
 													<th class="col-4">Restrictions</th>
 												</tr>
@@ -126,7 +126,7 @@
 						<h1>Catering</h1>
 						<table class="table">
 							<thead>
-								<tr class="main">
+								<tr class="danger">
 									<th class="col-3">Catering Name</th>
 									<th class="col-2">Staff Price</th>
 									<th class="col-6">Available Foods</th>
@@ -137,7 +137,7 @@
 							<tbody>
 								<tr>
 									<td>${catering.name}</td>
-									<td class="col-3">$${catering.staff_price}</td>
+									<td class="col-3 main">$${catering.staff_price}</td>
 									<!-- Displays all the different food restrictions available for the catering company -->
 									<td class="col-3">
 										<c:set var="uniqueRestrictions" value="" />
@@ -161,7 +161,7 @@
 											class="img-thumbnail">
 										<table class="table">
 											<thead>
-												<tr class="main">
+												<tr class="danger">
 													<th class="col-1"></th>
 													<th class="col-2">Name</th>
 													<th class="col-7">Description</th>
@@ -177,7 +177,7 @@
 																class="img-thumbnail"></td>
 														<td>${food.name}</td>
 														<td>${food.description}</td>
-														<td>$${food.price}</td>
+														<td class="main">$${food.price}</td>
 														<td><input type="number" class="col-xs-2 form-control"
 																style="width: 4rem;" value="0"
 																onchange="updateTotalPrice(this)"
@@ -208,7 +208,7 @@
 												<img src="/images/rooms/${room.image}" alt="${room.name}"
 													class="card-img-top" style="height: 15rem; object-fit: cover;">
 												<div class="card-body">
-													<h5 class="card-title main" style="text-transform: uppercase;">
+													<h5 class="card-title danger" style="text-transform: uppercase;">
 														${room.type}</h5>
 													<div class="room-details">
 														<p>Capacity: ${room.capacity}</p>
@@ -224,14 +224,14 @@
 																	<li>Rooms Available: <span
 																			class="roomsAvailable">${availableRoom.roomsAvailable}</span>
 																	</li>
-																	<li>Price per Night: $<span
-																			class="pricePerNight">${availableRoom.pricePerNight}</span>
+																	<li>Price per Night: <span
+																			class="pricePerNight main">$${availableRoom.pricePerNight}</span>
 																	</li>
 																</ul>
 															</c:forEach>
 															<div class="d-flex justify-content-center">
 																<div class="d-flex justify-content-between">
-																	<label class="main mx-5 my-auto">Nights:</label>
+																	<label class="danger mx-5 my-auto">Nights:</label>
 
 																	<input type="number" class="col-xs-2 form-control"
 																		style="width: 4rem;" value="0"
@@ -239,7 +239,7 @@
 																		data-previous-value="0">
 																</div>
 																<div class="d-flex justify-content-between">
-																	<label class="main mx-5 my-auto">Rooms:</label>
+																	<label class="danger mx-5 my-auto">Rooms:</label>
 
 																	<input type="number" class="col-xs-2 form-control"
 																		style="width: 4rem;" value="0"
@@ -366,7 +366,7 @@
 					// @returns {void}
 					function updateRooms(input) {
 						var rooms = parseInt(input.value);
-						var pricePerNight = parseFloat(document.querySelector('.pricePerNight').innerHTML);
+						var pricePerNight = parseFloat(document.querySelector('.pricePerNight').innerHTML.slice(1));
 						var roomsAvailable = parseInt(document.querySelector('.roomsAvailable').innerHTML);
 						var nights = parseInt(document.querySelector('#numberOfNights').value);
 
@@ -374,7 +374,7 @@
 
 						// Check if the number of rooms is within the available rooms and is not negative
 						if (rooms >= 0 && rooms <= roomsAvailable && nights >= 0) {
-							var updatedPrice = pricePerNight * nights * rooms;
+							var updatedPrice = currentPrice;
 
 							if (rooms < input.dataset.previousValue) {
 								var removedRooms = input.dataset.previousValue - rooms;
