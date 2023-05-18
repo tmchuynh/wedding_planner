@@ -17,12 +17,12 @@
 
 		<body>
 			<div class="container-fluid body-container p-4">
-				<h1 class="main">Wedding Planner</h1>
+				<h1 class="danger">Wedding Planner</h1>
 				<h2>Venues</h2>
 
 				<table class="table table-hover">
 					<thead>
-						<tr class="main">
+						<tr class="danger">
 							<th>‎&#160;&#160;&#160;&#160;&#160;Name</th>
 							<th>City</th>
 							<th>State</th>
@@ -49,7 +49,7 @@
 									<h3 class="accordion-header">&#160;Details:</h3>
 									<table class="table table-hover">
 										<thead>
-											<tr class="main">
+											<tr class="danger">
 												<th class="col-3">Amenities</th>
 												<th class="col-3">Restrictions</th>
 												<th class="col-3">Peak Season</th>

@@ -18,7 +18,7 @@
 				<img src="/images/extra/photo2.png" alt="venue" class="image5">
 				<img src="/images/extra/photo2.png" alt="venue" class="image6">
 				<div class="d-flex justify-content-between">
-					<h1 class="main">Decorations Available for ${venue != null ? venue.name : ''}</h1>
+					<h1 class="danger">Decorations Available for ${venue != null ? venue.name : ''}</h1>
 					<div class="d-flex justify-content-between mx-3">
 						<a class="btn btn-secondary m-3" href="/venues">Back to Venue List</a>
 						<a class="btn btn-secondary m-3" href="/catering/${venue.id }">Back to Catering Detail</a>
@@ -33,12 +33,12 @@
 									<img src="/images/decorations/${decoration.image}" alt="${decoration.name}"
 										class="card-img-top" style="height: 15rem; object-fit: cover;">
 									<div class="card-body">
-										<h3 class="main card-title">${decoration.name}</h3>
+										<h3 class="danger card-title">${decoration.name}</h3>
 										<p class="card-text">Type: ${decoration.type}</p>
 										<p class="card-text">Dimensions: ${decoration.width}W x
 											${decoration.height}H x ${decoration.depth}D</p>
-										<p class="card-text">Fragile: ${decoration.fragile}</p>
-										<p class="card-text">Fee: ${decoration.fee}</p>
+										<p class="card-text" >Fragile: <span style="text-transform: uppercase;">${decoration.fragile}</span></p>
+										<p class="card-text">Fee: <span class="main">$${decoration.fee}</span></p>
 										<p class="card-text">Quantity: ${decoration.quantity}</p>
 									</div>
 								</div>

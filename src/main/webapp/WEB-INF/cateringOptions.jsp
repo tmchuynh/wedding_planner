@@ -15,14 +15,14 @@
 			<div class="container-fluid body-container p-4">
 				<img src="/images/extra/image4.png" alt="venue" class="image2">
 				<div class="d-flex justify-content-between">
-					<h1 class="main">Catering Options for ${venue != null ? venue.name : ''}</h1>
+					<h1 class="danger">Catering Options for ${venue != null ? venue.name : ''}</h1>
 					<a class="btn btn-secondary m-3 float-end" href="/venues">Back to Venue
 						List</a>
 				</div>
 
 				<table class="table">
 					<thead>
-						<tr class="main">
+						<tr class="danger">
 							<th>&#160;&#160;&#160;&#160;&#160;Catering Name</th>
 							<th class="col-3">Staff Price</th>
 							<th class="col-3">Available Foods</th>
@@ -33,7 +33,7 @@
 						<c:forEach items="${cateringOptions}" var="catering">
 							<tr class="accordion">
 								<td><span class="arrow">&#x25B6;</span> ${catering.name}</td>
-								<td class="col-3">$${catering.staff_price}</td>
+								<td class="col-3 main">$${catering.staff_price}</td>
 								<!-- Displays all the different food restrictions available for the catering company -->
 								<td class="col-3">
 									<c:set var="uniqueRestrictions" value="" />
@@ -56,7 +56,7 @@
 										style="width: 200px; height: 200px; object-fit: cover;" class="img-thumbnail">
 									<table class="table">
 										<thead>
-											<tr class="main">
+											<tr class="danger">
 												<th class="col-1"></th>
 												<th class="col-2">Name</th>
 												<th class="col-8">Description</th>
@@ -71,7 +71,7 @@
 															class="img-thumbnail"></td>
 													<td class="col-2">${food.name}</td>
 													<td class="col-8">${food.description}</td>
-													<td class="col-3">$${food.price}</td>
+													<td class="col-3 main">$${food.price}</td>
 												</tr>
 											</c:forEach>
 										</tbody>

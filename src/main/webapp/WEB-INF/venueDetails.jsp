@@ -18,7 +18,7 @@
 				<div class="container-fluid body-container p-4">
 					<img src="/images/extra/image3.png" alt="venue" class="image1">
 					<div class="d-flex justify-content-between">
-						<h1 class="main">${venue != null ? venue.name : ''} Details</h1>
+						<h1 class="danger">${venue != null ? venue.name : ''} Details</h1>
 						<div class="d-flex justify-content-between">
 							<a class="btn btn-secondary m-3" href="/venues">Back to Venue List</a>
 							<a class="btn btn-primary m-3" href="/catering/${venue.id }">Continue</a>
@@ -30,16 +30,16 @@
 							class="btn btn-primary">
 					</form>
 					<hr>
-					<h3 class="main">${venue.name}</h3>
+					<h3 class="danger">${venue.name}</h3>
 					<p>City: ${venue.city}</p>
 					<p>State: ${venue.state}</p>
-					<p>Price: $${venue.price }</p>
+					<p>Price: <span class="main">$${venue.price }</span></p>
 
-					<h3 class="main">Selected Date: ${date}</h3>
+					<h3 class="danger">Selected Date: ${date}</h3>
 					<c:if test="${price != null}">
-						<p>Reception Price: $${price.receptionStartingPrice}</p>
-						<p>Ceremony Price: $${price.ceremonyStartingPrice}</p>
-						<p>Bar Price: $${price.barStartingPrice}</p>
+						<p>Reception Price: <span class="main">$${price.receptionStartingPrice}</span></p>
+						<p>Ceremony Price: <span class="main">$${price.ceremonyStartingPrice}</span></p>
+						<p>Bar Price: <span class="main">$${price.barStartingPrice}</span></p>
 						<c:if test="${price.peakSeason}">
 							<p>
 								Off Peak Season (
@@ -63,7 +63,7 @@
 
 					<table class="table">
 						<thead>
-							<tr class="main">
+							<tr class="danger">
 								<th class="col-4">Amenities</th>
 								<th class="col-4">Restrictions</th>
 							</tr>

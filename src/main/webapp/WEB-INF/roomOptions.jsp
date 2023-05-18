@@ -15,7 +15,7 @@
 
 			<div class="container-fluid p-4">
 				<div class="d-flex justify-content-between">
-					<h1 class="main">Available Rooms for ${venue != null ? venue.name : ''}</h1>
+					<h1 class="danger">Available Rooms for ${venue != null ? venue.name : ''}</h1>
 					<div class="d-flex justify-content-between">
 						<a class="btn btn-secondary m-3" href="/venues">Back to Venue
 							List</a> <a class="btn btn-secondary m-3" href="/venues/${venue.id }">Pick
@@ -37,7 +37,7 @@
 										<img src="/images/rooms/${room.image}" alt="${room.name}" class="card-img-top"
 											style="height: 15rem; object-fit: cover;">
 										<div class="card-body">
-											<h5 class="card-title main" style="text-transform: uppercase;">${room.type}
+											<h5 class="card-title danger" style="text-transform: uppercase;">${room.type}
 											</h5>
 											<div class="room-details">
 												<p>Capacity: ${room.capacity}</p>
@@ -50,7 +50,7 @@
 														<ul>
 															<li>Date: ${availableRoom.date}</li>
 															<li>Rooms Available: ${availableRoom.roomsAvailable}</li>
-															<li>Price per Night: $${availableRoom.pricePerNight}</li>
+															<li>Price per Night: <span class="main">$${availableRoom.pricePerNight}</span></li>
 														</ul>
 													</c:forEach>
 												</c:if>
