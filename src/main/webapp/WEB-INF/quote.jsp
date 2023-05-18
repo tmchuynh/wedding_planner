@@ -336,6 +336,7 @@
 					// 
 					// @returns {void}
 					function updateRooms(input) {
+						// bug when updating room prices
 						var rooms = parseInt(input.value);
 						var pricePerNight = parseFloat(document.querySelector('.pricePerNight').innerHTML.slice(1));
 						var roomsAvailable = parseInt(document.querySelector('.roomsAvailable').innerHTML);
