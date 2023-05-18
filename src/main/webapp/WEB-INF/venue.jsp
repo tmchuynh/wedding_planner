@@ -45,20 +45,20 @@
 
 							<tr class="accordion-content">
 								<td colspan="7"><img src="/images/venues/${venue.image }" alt="${venue.name }"
-										style="width: 200px; height: 200px; object-fit: cover;" class="img-thumbnail">
-									<h3 class="accordion-header">Details:</h3>
+										style="width: 200px; height: 200px; object-fit: cover;" class="mb-4 img-thumbnail">
+									<h3 class="accordion-header">&#160;Details:</h3>
 									<table class="table table-hover">
 										<thead>
-											<tr>
-												<th>Amenities</th>
-												<th>Restrictions</th>
-												<th>Peak Season</th>
-												<th>Off-Peak Season</th>
+											<tr class="main">
+												<th class="col-3">Amenities</th>
+												<th class="col-3">Restrictions</th>
+												<th class="col-3">Peak Season</th>
+												<th class="col-3">Off-Peak Season</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
-												<td>
+												<td class="col-3">
 													<c:forEach items="${venue.amenities}" var="amenity">
 														<p>
 															<i class="bi bi-check-lg"></i>${amenity}
@@ -66,7 +66,7 @@
 														<br>
 													</c:forEach>
 												</td>
-												<td>
+												<td class="col-3">
 													<c:forEach items="${venue.restrictions}" var="restriction">
 														<p>
 															<i class="bi bi-x"></i>${restriction}
@@ -74,7 +74,7 @@
 														<br>
 													</c:forEach>
 												</td>
-												<td>
+												<td class="col-3">
 													<c:forEach items="${venue.peakSeason}" var="peakSeason">
 														<p>
 															<i class="bi bi-x"></i>${peakSeason}
@@ -82,7 +82,7 @@
 														<br>
 													</c:forEach>
 												</td>
-												<td>
+												<td class="col-3">
 													<c:forEach items="${venue.offPeakSeason}" var="offPeakSeason">
 														<p>
 															<i class="bi bi-x"></i>${offPeakSeason}

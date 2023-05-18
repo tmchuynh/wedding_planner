@@ -64,13 +64,13 @@
 					<table class="table">
 						<thead>
 							<tr class="main">
-								<th>Amenities</th>
-								<th>Restrictions</th>
+								<th class="col-4">Amenities</th>
+								<th class="col-4">Restrictions</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>
+								<td class="col-4">
 									<c:forEach items="${venue.amenities}" var="amenity">
 										<p>
 											<i class="bi bi-check-lg"></i>${amenity}
@@ -78,7 +78,7 @@
 										<br>
 									</c:forEach>
 								</td>
-								<td>
+								<td class="col-4">
 									<c:forEach items="${venue.restrictions}" var="restriction">
 										<p>
 											<i class="bi bi-x"></i>${restriction}

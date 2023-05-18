@@ -67,11 +67,11 @@
 						<table class="table">
 							<thead>
 								<tr class="main">
-									<th>‎Name</th>
-									<th>City</th>
-									<th>State</th>
-									<th>Price</th>
-									<th class="text-center">Rating</th>
+									<th class="col-2">‎Name</th>
+									<th class="col-1">City</th>
+									<th class="col-1">State</th>
+									<th class="col-1">Price</th>
+									<th class="text-center col-1">Rating</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -91,13 +91,13 @@
 										<table class="table">
 											<thead>
 												<tr class="main">
-													<th>Amenities</th>
-													<th>Restrictions</th>
+													<th class="col-4">Amenities</th>
+													<th class="col-4">Restrictions</th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr>
-													<td>
+													<td class="col-4">
 														<c:forEach items="${venue.amenities}" var="amenity">
 															<p>
 																<i class="bi bi-check-lg"></i>${amenity}
@@ -105,7 +105,7 @@
 															<br>
 														</c:forEach>
 													</td>
-													<td>
+													<td class="col-4">
 														<c:forEach items="${venue.restrictions}" var="restriction">
 															<p>
 																<i class="bi bi-x"></i>${restriction}
@@ -127,19 +127,19 @@
 						<table class="table">
 							<thead>
 								<tr class="main">
-									<th>Catering Name</th>
-									<th>Staff Price</th>
-									<th>Available Foods</th>
-									<th></th>
+									<th class="col-3">Catering Name</th>
+									<th class="col-2">Staff Price</th>
+									<th class="col-6">Available Foods</th>
+									<th class="col-2"></th>
 									<th></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
 									<td>${catering.name}</td>
-									<td>$${catering.staff_price}</td>
+									<td class="col-3">$${catering.staff_price}</td>
 									<!-- Displays all the different food restrictions available for the catering company -->
-									<td>
+									<td class="col-3">
 										<c:set var="uniqueRestrictions" value="" />
 										<c:forEach items="${catering.availableFoods}" var="food">
 											<c:forEach items="${food.restrictions}" var="restriction">
@@ -161,12 +161,12 @@
 											class="img-thumbnail">
 										<table class="table">
 											<thead>
-												<tr>
-													<th></th>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-													<th></th>
+												<tr class="main">
+													<th class="col-1"></th>
+													<th class="col-2">Name</th>
+													<th class="col-7">Description</th>
+													<th class="col-2">Price</th>
+													<th class="col-3"></th>
 												</tr>
 											</thead>
 											<tbody>

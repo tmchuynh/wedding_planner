@@ -16,18 +16,16 @@
 				<img src="/images/extra/image4.png" alt="venue" class="image2">
 				<div class="d-flex justify-content-between">
 					<h1 class="main">Catering Options for ${venue != null ? venue.name : ''}</h1>
-					<div class="d-flex justify-content-between">
-						<a class="btn btn-secondary m-3" href="/venues">Back to Venue
-							List</a>
-					</div>
+					<a class="btn btn-secondary m-3 float-end" href="/venues">Back to Venue
+						List</a>
 				</div>
 
 				<table class="table">
 					<thead>
 						<tr class="main">
 							<th>&#160;&#160;&#160;&#160;&#160;Catering Name</th>
-							<th>Staff Price</th>
-							<th>Available Foods</th>
+							<th class="col-3">Staff Price</th>
+							<th class="col-3">Available Foods</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -35,9 +33,9 @@
 						<c:forEach items="${cateringOptions}" var="catering">
 							<tr class="accordion">
 								<td><span class="arrow">&#x25B6;</span> ${catering.name}</td>
-								<td>$${catering.staff_price}</td>
+								<td class="col-3">$${catering.staff_price}</td>
 								<!-- Displays all the different food restrictions available for the catering company -->
-								<td>
+								<td class="col-3">
 									<c:set var="uniqueRestrictions" value="" />
 									<c:forEach items="${catering.availableFoods}" var="food">
 										<c:forEach items="${food.restrictions}" var="restriction">
@@ -58,22 +56,22 @@
 										style="width: 200px; height: 200px; object-fit: cover;" class="img-thumbnail">
 									<table class="table">
 										<thead>
-											<tr>
-												<th></th>
-												<th>Name</th>
-												<th>Description</th>
-												<th>Price</th>
+											<tr class="main">
+												<th class="col-1"></th>
+												<th class="col-2">Name</th>
+												<th class="col-8">Description</th>
+												<th class="col-3">Price</th>
 											</tr>
 										</thead>
 										<tbody>
 											<c:forEach items="${catering.availableFoods}" var="food">
 												<tr>
-													<td><img src="/images/food/${food.image }" alt="${food.name }"
+													<td class="col-1"><img src="/images/food/${food.image }" alt="${food.name }"
 															style="width: 150px; height: 150px; object-fit: cover;"
 															class="img-thumbnail"></td>
-													<td>${food.name}</td>
-													<td>${food.description}</td>
-													<td>$${food.price}</td>
+													<td class="col-2">${food.name}</td>
+													<td class="col-8">${food.description}</td>
+													<td class="col-3">$${food.price}</td>
 												</tr>
 											</c:forEach>
 										</tbody>
